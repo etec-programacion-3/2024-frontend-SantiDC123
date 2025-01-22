@@ -1,0 +1,89 @@
+.pagina-tienda {
+    padding: 2rem;
+}
+
+.pagina-tienda h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.pagina-tienda .contenedor-categorias .listado-categorias {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.pagina-tienda .contenedor-categorias .listado-categorias li{
+    margin-right: 2rem;
+}
+.pagina-tienda .contenedor-categorias .listado-categorias .btn-categoria{
+    display: block;
+    width: fit-content;
+    padding: .3rem 1rem;
+    color: #fff;
+    background-color: rgb(0, 31, 124);
+    border: 1px solid #fff;
+    border-radius: 30px;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+.pagina-tienda .contenedor-categorias .listado-categorias .btn-categoria:hover{
+    opacity: .6;
+    transform: scale(1.1);
+}
+.pagina-tienda .contenedor-categorias .listado-categorias li:last-child{
+    margin-right: 0;
+}
+
+.pagina-tienda .contenedor-productos {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+}
+
+.pagina-tienda .contenedor-productos .producto {
+    margin: 1rem 0;
+    width: 22%;
+    padding: 1.5rem;
+    box-shadow: 0px 0px 5px 1px royalblue;
+    border-radius: 5px;
+
+}
+
+.pagina-tienda .contenedor-productos .producto .img-producto {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-bottom: 1px solid royalblue;
+    margin-bottom: 1rem;
+}
+
+.pagina-tienda .contenedor-productos .producto .descripcion-producto {
+    margin: 1rem 0;
+}
+
+.pagina-tienda .contenedor-productos .producto .precio-producto {
+    display: block;
+    margin-bottom: 2rem;
+    color: rgb(8, 40, 136);
+    font-weight: bold;
+    font-style: italic;
+}
+
+.pagina-tienda .contenedor-productos .producto .btn-agregar-producto {
+    background-color: royalblue;
+    color: #fff;
+    display: block;
+    width: fit-content;
+    padding: .4rem 1.2rem;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity .4s ease;
+}
+
+.pagina-tienda .contenedor-productos .producto .btn-agregar-producto:hover {
+    opacity: .6;
+}
