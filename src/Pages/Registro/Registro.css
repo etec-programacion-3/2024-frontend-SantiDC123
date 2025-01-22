@@ -1,0 +1,58 @@
+.seccion-registro{
+    padding: 2rem 0;
+}
+.seccion-registro h2{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.seccion-registro hr{
+    max-width: 500px;
+    margin: auto;
+    border: 1px solid royalblue;
+    margin-bottom: 2rem;
+}
+.formulario{
+    max-width: 500px;
+    margin: auto;
+    background-color: #f1f1f1;
+    padding: 1.5rem;
+    border-radius: 5px;
+    text-align: center;
+    color: #000;
+    border: 1px solid royalblue;
+}
+.formulario div{
+    margin-bottom: 1rem;
+}
+.formulario input,.formulario label{
+    display: block;
+    margin: auto;
+    width: 80%;
+}
+.formulario label{
+    margin-bottom: .4rem;
+}
+.formulario input{
+    padding: .4rem;
+    border-radius: 5px;
+    border: 0;
+    border: 1px solid royalblue;    
+}
+
+.formulario button{
+    background-color: #fff;
+    border-radius: 30px;
+    display: block;
+    margin: auto;
+    margin-top: 2.5rem;
+    border: 0;
+    padding: .4rem 1.2rem;
+    color: royalblue;
+    border: 1px solid royalblue;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+.formulario button:hover{
+    background-color: royalblue;
+    color: #fff;
+}
