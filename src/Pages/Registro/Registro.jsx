@@ -1,6 +1,19 @@
+import { useState } from 'react'
 import './Registro.css'
 
 export const Registro = () => {
+
+  const [formData, setFormData] = useState({
+    nombre: "",
+    email: "",
+    password: "",
+    passwordConfirm: ""
+  })
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value})
+  } 
+
   return (
     <section className="seccion-registro">
       <h2>Formulario de Registro</h2>
@@ -10,19 +23,19 @@ export const Registro = () => {
         <form className='formulario'>
           <div>
             <label htmlFor="">Nombre</label>
-            <input type="text" required />
+            <input name='nombre' onChange={(e) => handleChange(e)} type="text" required />
           </div>
           <div>
             <label htmlFor="">Email</label>
-            <input type="email" required />
+            <input name='email' onChange={(e) => handleChange(e)} type="email" required />
           </div>
           <div>
             <label htmlFor="">Contraseña</label>
-            <input type="password"  required />
+            <input name='password' onChange={(e) => handleChange(e)} type="password"  required />
           </div>
           <div>
             <label htmlFor="">Confirmar contraseña</label>
-            <input type="password"  required />
+            <input name='passwordConfirm' onChange={(e) => handleChange(e)} type="password"  required />
           </div>
 
           <button type="submit">Registrarme</button>
