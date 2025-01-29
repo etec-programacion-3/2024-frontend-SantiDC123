@@ -1,5 +1,13 @@
+import { ProductoCarrito } from '../../components/ProductoCarrito/ProductoCarrito'
 import './Carrito.css'
+
+const carrito = [
+    {id:2010,imagen:"teclado.png", titulo:"Teclado Gamer", precio:22000, cantidad:2, subtotal:44000 },
+    {id:2023,imagen:"mouse.png", titulo:"Mouse Gamer", precio:12000, cantidad:3, subtotal:36000 },
+    {id:3310,imagen:"silla.png", titulo:"Silla Gamer", precio:25000, cantidad:1, subtotal:25000},
+   ]
 export const Carrito = () => {
+    
     return (
         <section className="seccion-carrito">
             <h2>Carrito de Compras</h2>
@@ -15,50 +23,13 @@ export const Carrito = () => {
                         <div className="cabecera-col">Acción</div>
                     </div>
                     <div className="cuerpo-tabla">
-                        <article className="producto-carrito">
-                            <img src="/productos/teclado.png" alt="producto carrito" />
-                            <h3>Título producto</h3>
-                            <div className="contenedor-cantidad">
-                                <button className='btnDisminuirCantidad'>-</button>
-                                <span className='spanCantidadProducto'>2</span>
-                                <button className='btnAumentarCantidad'>+</button>
-                            </div>
-                            <p className='precio-producto-carrito'>$15000</p>
-                            <p className='subtotal-producto-carrito'>$30000</p>
-                            <div className="contenedor-btn">
-                                <button className='btn-quitar-producto'>Quitar</button>
-                            </div>
-                        </article>
 
-                        <article className="producto-carrito">
-                            <img src="/productos/silla.png" alt="" />
-                            <h3>Título producto</h3>
-                            <div className="contenedor-cantidad">
-                                <button className='btnDisminuirCantidad'>-</button>
-                                <span className='spanCantidadProducto'>2</span>
-                                <button className='btnAumentarCantidad'>+</button>
-                            </div>
-                            <p className='precio-producto-carrito'>$15000</p>
-                            <p className='subtotal-producto-carrito'>$30000</p>
-                            <div className="contenedor-btn">
-                                <button className='btn-quitar-producto'>Quitar</button>
-                            </div>
-                        </article>
+                        {
+                            carrito.map((producto) => {
+                                return <ProductoCarrito id={producto.id} titulo={producto.titulo} imagen={producto.imagen} cantidad={producto.cantidad} precio={producto.precio} subtotal={producto.subtotal}    />  
+                            })
+                        }
 
-                        <article className="producto-carrito">
-                            <img src="/productos/teclado.png" alt="producto carrito" />
-                            <h3>Título producto</h3>
-                            <div className="contenedor-cantidad">
-                                <button className='btnDisminuirCantidad'>-</button>
-                                <span className='spanCantidadProducto'>2</span>
-                                <button className='btnAumentarCantidad'>+</button>
-                            </div>
-                            <p className='precio-producto-carrito'>$15000</p>
-                            <p className='subtotal-producto-carrito'>$30000</p>
-                            <div className="contenedor-btn">
-                                <button className='btn-quitar-producto'>Quitar</button>
-                            </div>
-                        </article>
                     </div>
                     <div className="pie-tabla">
                         <p className='parrafo-total'>Total de compra: <span id='spanTotalCompra'>$350000</span></p>

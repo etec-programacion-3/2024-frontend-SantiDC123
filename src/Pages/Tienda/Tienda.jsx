@@ -13,6 +13,8 @@ const listadoProductos = [
     {id:3810,imagen:"silla.png", titulo:"Silla Gamer", descripcion:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum, quod!", precio:2000 },
     {id:4010,imagen:"teclado.png", titulo:"Teclado Gamer", descripcion:"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum, quod!", precio:2000 },
 ]
+
+
 export const Tienda = () => {
 
     

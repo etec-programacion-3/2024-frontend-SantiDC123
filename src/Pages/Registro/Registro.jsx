@@ -14,13 +14,18 @@ export const Registro = () => {
     setFormData({...formData, [e.target.name]: e.target.value})
   } 
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // enviar la informaciñon al servidor.
+    console.log(formData);
+  }
   return (
     <section className="seccion-registro">
       <h2>Formulario de Registro</h2>
       <hr />
       <div className="contenedor">
 
-        <form className='formulario'>
+        <form onSubmit={(e) => handleSubmit(e)} className='formulario'>
           <div>
             <label htmlFor="">Nombre</label>
             <input name='nombre' onChange={(e) => handleChange(e)} type="text" required />
