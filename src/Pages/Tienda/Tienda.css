@@ -71,7 +71,14 @@
     font-weight: bold;
     font-style: italic;
 }
-
+.pagina-tienda .contenedor-productos .producto .input-cantidad{
+    display: block;
+    margin-bottom: 1rem;
+    padding: .4rem;
+    
+    border: 1px solid royalblue;
+    border-radius: 5px;
+}
 .pagina-tienda .contenedor-productos .producto .btn-agregar-producto {
     background-color: royalblue;
     color: #fff;

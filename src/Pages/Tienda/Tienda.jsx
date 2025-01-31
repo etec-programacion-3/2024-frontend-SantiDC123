@@ -33,7 +33,7 @@ export const Tienda = () => {
                     ?
                         listadoProductos.map((producto) => {
                             return (
-                                <CardProducto titulo={producto.titulo} portada={producto.portada} descripcion={producto.descripcion} precio={producto.precio}/>
+                                <CardProducto  titulo={producto.titulo} portada={producto.portada} descripcion={producto.descripcion} precio={producto.precio} stock={producto.stock}/>
                             );
                         })
                         

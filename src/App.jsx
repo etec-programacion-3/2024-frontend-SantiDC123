@@ -7,6 +7,7 @@ import { Registro } from './Pages/Registro/Registro'
 import { Route, Routes } from 'react-router'
 import { Login } from './Pages/Login/Login'
 import { Carrito } from './Pages/Carrito/Carrito'
+import { UserProvider } from './context/UserContext'
 
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
 
   return (
 
-    <>
+    <UserProvider>
+      
       <Navbar />
 
       <Routes>
@@ -32,7 +34,7 @@ function App() {
       <Footer />
 
 
-    </>
+    </UserProvider>
   )
 }
 
