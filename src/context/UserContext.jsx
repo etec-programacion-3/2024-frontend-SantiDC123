@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { peticionLoginUsuario, peticionRegistrarUsuario } from "../api/user";
+import { peticionLoginUsuario, peticionRegistrarUsuario, peticionVerificarLogin } from "../api/user";
 import Cookies from 'js-cookie'
 
 export const UserContext = createContext();
@@ -44,9 +44,32 @@ export const UserProvider = ({ children }) => {
         setEstaAutenticado(false)
         setUsuario(null)
     }
-    useEffect(() => {
+  
+    const verificarLogin = async () => {
+        const cookies = Cookies.get();
+        if(cookies.token){
+            try {
+                const response = await peticionVerificarLogin()
+                setUsuario(response.data)
+                setEstaAutenticado(true)
+                console.log('usuario autenticado')
+                console.log(response.data)
+            } catch (error) {
+                console.log(error);
+                console.log('Error: usuario no autenticado BACKEND')
+            }
+           
+        }else{
+            setUsuario(null)
+            setEstaAutenticado(false)
+            console.log('usuario NO logeado FRONT')
+        }
+    }
 
-    }, [estaAutenticado])
+    useEffect(() => {
+        verificarLogin();
+    }, [])
+
     return (
         <UserContext.Provider value={{
             registrarUsuario,

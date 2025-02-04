@@ -18,8 +18,7 @@ export const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // enviar la informaciñon al servidor.
-    console.log(formData);
+    // enviar la informacion al servidor.
     loginUsuario(formData);
   }
 

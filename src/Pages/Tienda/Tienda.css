@@ -89,6 +89,7 @@
     border-radius: 5px;
     cursor: pointer;
     transition: opacity .4s ease;
+    text-decoration: none;
 }
 
 .pagina-tienda .contenedor-productos .producto .btn-agregar-producto:hover {

@@ -8,6 +8,7 @@ import { Route, Routes } from 'react-router'
 import { Login } from './Pages/Login/Login'
 import { Carrito } from './Pages/Carrito/Carrito'
 import { UserProvider } from './context/UserContext'
+import { CartProvider } from './context/CartContext'
 
 function App() {
 
@@ -16,24 +17,25 @@ function App() {
   return (
 
     <UserProvider>
-      
-      <Navbar />
+      <CartProvider>
 
-      <Routes>
-        <Route path='/' element={<Tienda />} />
+        <Navbar />
 
-        <Route path='/registro' element={<Registro />} />
+        <Routes>
+          <Route path='/' element={<Tienda />} />
 
-        <Route path='/login' element={<Login />} />
+          <Route path='/registro' element={<Registro />} />
 
-        <Route path='/carrito' element={<Carrito />} />
+          <Route path='/login' element={<Login />} />
 
-      </Routes>
-   
+          <Route path='/carrito' element={<Carrito />} />
 
-      <Footer />
+        </Routes>
 
 
+        <Footer />
+
+      </CartProvider>
     </UserProvider>
   )
 }
