@@ -36,7 +36,7 @@ export const Tienda = () => {
                         ?
                         listadoProductos.map((producto) => {
                             return (
-                                <CardProducto titulo={producto.titulo} portada={producto.portada} descripcion={producto.descripcion} precio={producto.precio} stock={producto.stock} />
+                                <CardProducto key={producto._id} id={producto._id} titulo={producto.titulo} portada={producto.portada} descripcion={producto.descripcion} precio={producto.precio} stock={producto.stock} />
                             );
                         })
 
@@ -53,7 +53,7 @@ export const Tienda = () => {
                         <p>Productos del carrito:</p>
                         <ul>
                         {cart.map((item) => {
-                            return <li>{item.titulo}</li>
+                            return <li>{item._id} - CANTIDAD: {item.cantidad}</li>
                         })}
                         </ul>
                         

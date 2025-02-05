@@ -4,13 +4,17 @@ import { useCartContext } from "../../context/CartContext";
 import { useState } from "react";
 
 
-export const CardProducto = ({titulo,portada,descripcion,precio,stock}) => {  
+export const CardProducto = ({id,titulo,portada,descripcion,precio,stock}) => {  
     const {estaAutenticado} = useUserContext();
     const {addItem} = useCartContext();
     const [cantidad, setCantidad] = useState(1);
 
+    
+
     const addItemConfirm = () => {
-        addItem({titulo,portada,descripcion,precio,stock,cantidad})
+        
+        
+        addItem({id,titulo,portada,descripcion,precio,stock,cantidad})
         alert('producto agregado, cantidad: ' + cantidad)
     }
     return (
