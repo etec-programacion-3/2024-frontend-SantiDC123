@@ -1,9 +1,15 @@
+import { useCartContext } from "../../context/CartContext"
 
 
-export const ProductoCarrito = ({id,titulo,imagen,precio,cantidad,subtotal}) => {
+export const ProductoCarrito = ({id,titulo,portada,precio,cantidad}) => {
+    const {quitarProductoCarrito} = useCartContext();
+    const handleClick = (item) => {
+        alert('se elimino producto con ID: ' + id)
+        quitarProductoCarrito(item);
+    }
     return (
         <article className="producto-carrito">
-            <img src={`/productos/${imagen}`} alt="producto carrito" />
+            <img src={`/productos/${portada}`} alt="producto carrito" />
             <h3>{titulo}</h3>
             <div className="contenedor-cantidad">
                 <button className='btnDisminuirCantidad'>-</button>
@@ -11,9 +17,9 @@ export const ProductoCarrito = ({id,titulo,imagen,precio,cantidad,subtotal}) => 
                 <button className='btnAumentarCantidad'>+</button>
             </div>
             <p className='precio-producto-carrito'>${precio}</p>
-            <p className='subtotal-producto-carrito'>${subtotal}</p>
+            <p className='subtotal-producto-carrito'>${precio * cantidad}</p>
             <div className="contenedor-btn">
-                <button className='btn-quitar-producto'>Quitar</button>
+                <button onClick={() => handleClick({id,precio,cantidad})} className='btn-quitar-producto'>Quitar</button>
             </div>
         </article>
     )

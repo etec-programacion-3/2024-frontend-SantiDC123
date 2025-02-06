@@ -52,8 +52,7 @@ export const UserProvider = ({ children }) => {
                 const response = await peticionVerificarLogin()
                 setUsuario(response.data)
                 setEstaAutenticado(true)
-                console.log('usuario autenticado')
-                console.log(response.data)
+                
             } catch (error) {
                 console.log(error);
                 console.log('Error: usuario no autenticado BACKEND')

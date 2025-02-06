@@ -12,10 +12,7 @@ export const CardProducto = ({id,titulo,portada,descripcion,precio,stock}) => {
     
 
     const addItemConfirm = () => {
-        
-        
-        addItem({id,titulo,portada,descripcion,precio,stock,cantidad})
-        alert('producto agregado, cantidad: ' + cantidad)
+        addItem({id,cantidad,precio,stock})
     }
     return (
         <article className="producto">

@@ -1,13 +1,17 @@
+import { useEffect, useState } from 'react'
 import { ProductoCarrito } from '../../components/ProductoCarrito/ProductoCarrito'
+import { useCartContext } from '../../context/CartContext'
 import './Carrito.css'
 
-const carrito = [
-    {id:2010,imagen:"teclado.png", titulo:"Teclado Gamer", precio:22000, cantidad:2, subtotal:44000 },
-    {id:2023,imagen:"mouse.png", titulo:"Mouse Gamer", precio:12000, cantidad:3, subtotal:36000 },
-    {id:3310,imagen:"silla.png", titulo:"Silla Gamer", precio:25000, cantidad:1, subtotal:25000},
-   ]
 export const Carrito = () => {
+    const {cart,productosCarrito,listarProductosCarrito,totalCarrito} = useCartContext();
     
+    
+    useEffect(() => {
+        listarProductosCarrito();
+        
+    }, [])
+
     return (
         <section className="seccion-carrito">
             <h2>Carrito de Compras</h2>
@@ -25,14 +29,13 @@ export const Carrito = () => {
                     <div className="cuerpo-tabla">
 
                         {
-                            carrito.map((producto) => {
-                                return <ProductoCarrito id={producto.id} titulo={producto.titulo} imagen={producto.imagen} cantidad={producto.cantidad} precio={producto.precio} subtotal={producto.subtotal}    />  
+                            productosCarrito.map((producto) => {
+                                return <ProductoCarrito key={producto.id} id={producto.id} titulo={producto.titulo} portada={producto.portada} cantidad={producto.cantidad} precio={producto.precio}   />  
                             })
                         }
-
                     </div>
                     <div className="pie-tabla">
-                        <p className='parrafo-total'>Total de compra: <span id='spanTotalCompra'>$350000</span></p>
+                        <p className='parrafo-total'>Total de compra: <span id='spanTotalCompra'>${ totalCarrito }</span></p>
                         <button className='btn-confirmar-compra'>Confirmar compra</button>
                     </div>
                 </div>

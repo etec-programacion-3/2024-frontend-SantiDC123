@@ -18,6 +18,7 @@ export const Tienda = () => {
         }
         listar();
 
+
     }, [])
 
     console.log(cart)
@@ -53,7 +54,7 @@ export const Tienda = () => {
                         <p>Productos del carrito:</p>
                         <ul>
                         {cart.map((item) => {
-                            return <li>{item._id} - CANTIDAD: {item.cantidad}</li>
+                            return <li>{item.product} - CANTIDAD: {item.cantidad}</li>
                         })}
                         </ul>
                         
