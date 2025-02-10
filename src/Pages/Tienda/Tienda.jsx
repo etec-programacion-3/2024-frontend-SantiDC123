@@ -6,10 +6,11 @@ import { listarProductos } from '../../api/product';
 import { useCartContext } from '../../context/CartContext';
 
 
-
 export const Tienda = () => {
     const { cart } = useCartContext();
     const [listadoProductos, setListadoProductos] = useState([])
+
+    
 
     useEffect(() => {
         async function listar() {
@@ -18,6 +19,7 @@ export const Tienda = () => {
         }
         listar();
 
+     
 
     }, [])
 
@@ -46,20 +48,6 @@ export const Tienda = () => {
 
                 }
 
-
-
-                {
-                    cart.length > 0 &&
-                    <>
-                        <p>Productos del carrito:</p>
-                        <ul>
-                        {cart.map((item) => {
-                            return <li>{item.product} - CANTIDAD: {item.cantidad}</li>
-                        })}
-                        </ul>
-                        
-                    </>
-                }
             </div>
         </section>
     )

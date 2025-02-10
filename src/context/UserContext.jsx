@@ -15,6 +15,7 @@ export const useUserContext = () => {
 export const UserProvider = ({ children }) => {
     const [usuario, setUsuario] = useState(null)
     const [estaAutenticado, setEstaAutenticado] = useState(false)
+    const [loadingUser, setLoadingUser] = useState(true);
     const [error, setError] = useState([])
 
     const registrarUsuario = async (usuario) => {
@@ -52,21 +53,25 @@ export const UserProvider = ({ children }) => {
                 const response = await peticionVerificarLogin()
                 setUsuario(response.data)
                 setEstaAutenticado(true)
+                 setLoadingUser(false);
                 
             } catch (error) {
                 console.log(error);
                 console.log('Error: usuario no autenticado BACKEND')
+                 setLoadingUser(false);
             }
            
         }else{
             setUsuario(null)
             setEstaAutenticado(false)
             console.log('usuario NO logeado FRONT')
+             setLoadingUser(false);
         }
     }
 
     useEffect(() => {
         verificarLogin();
+       
     }, [])
 
     return (
@@ -74,6 +79,7 @@ export const UserProvider = ({ children }) => {
             registrarUsuario,
             loginUsuario,
             logoutUsuario,
+            loadingUser,
             usuario,
             estaAutenticado,
             error

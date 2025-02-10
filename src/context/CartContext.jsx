@@ -14,7 +14,9 @@ export const useCartContext = () => {
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [productosCarrito, setProductosCarrito] = useState([])
-    const [totalCarrito, setTotalCarrito] = useState(0)
+    const [loadingCart, setLoadingCart] = useState(true)
+    const [totalCarrito, setTotalCarrito] = useState(0);
+   
     
     const addItem = async (item) => {
         
@@ -50,7 +52,7 @@ export const CartProvider = ({ children }) => {
         const updatedCart = cart.filter((producto) => producto.product !== item.id )
         
         setCart(updatedCart);
-        setTotalCarrito(totalCarrito - (item.precio*item.cantidad))
+        
 
         await peticionActualizarCarrito({cart:updatedCart})
         await listarProductosCarrito();
@@ -59,12 +61,35 @@ export const CartProvider = ({ children }) => {
         const response = await peticionListarProductosCarrito();
         setProductosCarrito(response.data);
         setTotalCarrito(response.data.reduce((total,producto) => producto.cantidad*producto.precio + total , 0 ));
+        setLoadingCart(false)
     }
 
     const obtenerCarrito = async () => {
           const response = await peticionAccederCarrito()
           setCart(response.data)
     }
+
+    const modificarCantidadProducto = async (id,nuevaCantidad,aumentar,subtotal) => {
+
+        const updatedCart = cart.map((cartProduct) => {
+            if (cartProduct.product == id) {
+                return {
+                    ...cartProduct,
+                    cantidad: parseInt(nuevaCantidad),
+                }
+            }
+            return cartProduct;
+        })
+
+        setCart(updatedCart)
+        await peticionActualizarCarrito({cart:updatedCart})
+
+        const response = await peticionListarProductosCarrito();
+        setProductosCarrito(response.data);
+        setTotalCarrito(response.data.reduce((total,producto) => producto.cantidad*producto.precio + total , 0 ));
+
+    }
+
     useEffect(() => {
         obtenerCarrito();
     }, [])
@@ -76,6 +101,8 @@ export const CartProvider = ({ children }) => {
             limpiarCarrito,
             listarProductosCarrito,
             quitarProductoCarrito,
+            modificarCantidadProducto,
+            loadingCart,
             cart,
             totalCarrito
         }}>
