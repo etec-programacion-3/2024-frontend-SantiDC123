@@ -1,0 +1,69 @@
+.seccion-perfil {
+    padding: 3rem 0;
+}
+.seccion-perfil .contenedor{
+    min-height: 85vh;
+    text-align: center;
+}
+.seccion-perfil h2{
+    margin-bottom: 2rem;
+}
+.seccion-perfil hr{
+    max-width: 50%;
+
+    background-color: rgba(65, 105, 225, 0.292);
+    margin:2rem auto;
+    height: 1px;
+    border: 0;
+}
+
+
+.seccion-perfil .tabla-carrito {
+    border: 1px solid royalblue;
+}
+
+.seccion-perfil .tabla-carrito .cabecera-tabla {
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem 0;
+    background-color: #f1f1f1;
+}
+
+
+.seccion-perfil .tabla-carrito .cabecera-col {
+    width: 33.3%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.seccion-perfil .tabla-carrito .cuerpo-tabla .producto-carrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #000;
+    background-color: #fff;
+}
+
+.seccion-perfil .tabla-carrito .cuerpo-tabla .producto-carrito:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+.seccion-perfil .tabla-carrito .cuerpo-tabla .producto-carrito>* {
+    width: 33.3%;
+    text-align: center;
+    border-right: 1px solid #ccc;
+    max-height: 120px;
+    padding: 2rem .5rem;
+
+}
+
+.seccion-perfil .tabla-carrito .cuerpo-tabla .producto-carrito button{
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    color: royalblue;
+    transition: all .4s ease;
+}
+.seccion-perfil .tabla-carrito .cuerpo-tabla .producto-carrito button:hover{
+    opacity: .6;
+}

@@ -45,7 +45,7 @@ export const CardProducto = ({ id, titulo, portada, descripcion, precio, stock }
                     ?
                     <>
                         
-                        <input onChange={event => setCantidad(event.target.value)} type="number" max={stock} defaultValue={1} min={1} className="input-cantidad" />
+                        <input onChange={event => setCantidad(parseInt(event.target.value))} type="number" max={stock} defaultValue={1} min={1} className="input-cantidad" />
                         {estaAutenticado
                             ?
                             <button className='btn-agregar-producto' onClick={addItemConfirm}>Agregar al carrito</button>

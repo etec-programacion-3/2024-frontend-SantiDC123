@@ -4,10 +4,12 @@ import { useCartContext } from '../../context/CartContext'
 import './Carrito.css'
 import { useUserContext } from '../../context/UserContext'
 import { Link, useNavigate } from 'react-router'
+import { useSaleContext } from '../../context/SaleContext'
 
 export const Carrito = () => {
-    const { loadingCart, productosCarrito, listarProductosCarrito, totalCarrito } = useCartContext();
+    const {cart,limpiarCarrito, loadingCart, productosCarrito, listarProductosCarrito, totalCarrito } = useCartContext();
     const { estaAutenticado, loadingUser } = useUserContext();
+    const {loadingSale, registrarVenta} = useSaleContext();
 
     const navigate = useNavigate();
     useEffect(() => {
@@ -17,6 +19,12 @@ export const Carrito = () => {
         listarProductosCarrito();
 
     }, [])
+
+    const processSale = (venta) => {
+        registrarVenta(venta);
+        limpiarCarrito();
+        navigate('/thanks')
+    }
 
     return (
         <section className="seccion-carrito">
@@ -50,14 +58,14 @@ export const Carrito = () => {
                                 </div>
                                 <div className="pie-tabla">
                                     <p className='parrafo-total'>Total de compra: <span id='spanTotalCompra'>${totalCarrito}</span></p>
-                                    <button className='btn-confirmar-compra'>Confirmar compra</button>
+                                    <button onClick={e => processSale({total:totalCarrito,detalle:cart})} className='btn-confirmar-compra'>Confirmar compra</button>
                                 </div>
                             </div>
                             :
                             
                             <div className="alert-carrito">
                                 <h4>¡Su carrito de compras está vacío!</h4>
-                                <p>Visite nuestra <Link to="/">tienda </Link>para que pueda agregar productos a su carrito.</p>
+                                <p>Visite nuestra <Link to="/">tienda</Link> para que pueda agregar productos a su carrito.</p>
                             </div>
 
 

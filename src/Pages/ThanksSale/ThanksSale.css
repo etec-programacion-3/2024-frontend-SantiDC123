@@ -1,0 +1,29 @@
+.seccion-agradecimiento{
+    padding: 3rem;
+}
+.seccion-agradecimiento .contenedor{
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seccion-agradecimiento .contenedor-textos{
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    box-shadow: 0 3px 3px 2px rgba(0,0,0,0.4);
+    padding: 3rem;
+    transform: translateY(-50%);
+    text-align: center;
+}
+.seccion-agradecimiento .contenedor-textos h2{
+    margin-bottom: 2rem;
+}
+.seccion-agradecimiento .contenedor-textos .enlace-perfil{
+    text-decoration: none;
+    color: royalblue;
+    transition: all .4s ease;
+}
+.seccion-agradecimiento .contenedor-textos .enlace-perfil:hover{
+    opacity: .6;
+}

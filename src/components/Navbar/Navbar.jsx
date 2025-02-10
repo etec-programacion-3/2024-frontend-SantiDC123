@@ -17,7 +17,12 @@ export const Navbar = () => {
                         {
                             estaAutenticado
                                 ?
-                                <li className='item-menu'><Link to="/login" onClick={logoutUsuario} className='enlace-menu'>Salir</Link></li>
+                                <>
+                                    <li className='item-menu'><Link to="/perfil" className='enlace-menu'>Perfil</Link></li>
+                                    <li className='item-menu'><Link to="/carrito" className='enlace-menu'>Carrito</Link></li>
+                                    <li className='item-menu'><Link to="/login" onClick={logoutUsuario} className='enlace-menu'>Salir</Link></li>
+
+                                </>
                                 :
                                 <>
                                     <li className='item-menu'><Link to="/registro" className='enlace-menu'>Registro</Link></li>
@@ -25,7 +30,7 @@ export const Navbar = () => {
                                 </>
                         }
 
-                        <li className='item-menu'><Link to="/carrito" className='enlace-menu'>Carrito</Link></li>
+                       
                     </ul>
                 </nav>
             </div>
