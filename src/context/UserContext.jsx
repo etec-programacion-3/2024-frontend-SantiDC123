@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { peticionLoginUsuario, peticionRegistrarUsuario, peticionVerificarLogin } from "../api/user";
 import Cookies from 'js-cookie'
+import { useCartContext } from "./CartContext";
 
 export const UserContext = createContext();
 
@@ -13,6 +14,7 @@ export const useUserContext = () => {
 }
 
 export const UserProvider = ({ children }) => {
+    const {obtenerCarrito,setCart} = useCartContext();
     const [usuario, setUsuario] = useState(null)
     const [estaAutenticado, setEstaAutenticado] = useState(false)
     const [loadingUser, setLoadingUser] = useState(true);
@@ -34,6 +36,7 @@ export const UserProvider = ({ children }) => {
             const response = await peticionLoginUsuario(usuario);
             setUsuario(response.data);
             setEstaAutenticado(true);
+            obtenerCarrito();
         } catch (error) {
             console.log(error.response.data)
             setError([error.response.data.message])
@@ -41,9 +44,12 @@ export const UserProvider = ({ children }) => {
     }
 
     const logoutUsuario = () => {
+        
         Cookies.remove('token')
         setEstaAutenticado(false)
         setUsuario(null)
+        setCart([])
+       
     }
   
     const verificarLogin = async () => {
@@ -54,6 +60,7 @@ export const UserProvider = ({ children }) => {
                 setUsuario(response.data)
                 setEstaAutenticado(true)
                  setLoadingUser(false);
+                 obtenerCarrito();
                 
             } catch (error) {
                 console.log(error);
@@ -71,8 +78,17 @@ export const UserProvider = ({ children }) => {
 
     useEffect(() => {
         verificarLogin();
-       
+     
     }, [])
+
+    useEffect(()=> {
+        if (error.length > 0) {
+            const timer = setTimeout(() => {
+                setError([])
+            }, 5000);
+            return () => clearTimeout(timer)
+       }
+    }, [error])
 
     return (
         <UserContext.Provider value={{

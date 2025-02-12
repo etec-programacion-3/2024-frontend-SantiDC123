@@ -8,9 +8,9 @@ export const Footer = () => {
                     <div className='info-estudiante'>
                         <h4>Datos del estudiante</h4>
                         <ul>
-                            <li>Juan Perez</li>
-                            <li>juan@gmail.com</li>
-                            <li>Programación 2024</li>
+                            <li>Santiago Di Cesare</li>
+                            <li>s.dicesare@alumno.etec.um.edu.ar</li>
+                            <li>Programación 2025</li>
                         </ul>
                     </div>
                     <div className='info-colegio'>

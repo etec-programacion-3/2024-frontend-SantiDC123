@@ -1,28 +1,31 @@
 .seccion-perfil {
     padding: 3rem 0;
 }
-.seccion-perfil .contenedor{
+
+.seccion-perfil .contenedor {
     min-height: 85vh;
     text-align: center;
 }
-.seccion-perfil h2{
+
+.seccion-perfil h2 {
     margin-bottom: 2rem;
 }
-.seccion-perfil hr{
+
+.seccion-perfil hr {
     max-width: 50%;
 
     background-color: rgba(65, 105, 225, 0.292);
-    margin:2rem auto;
+    margin: 2rem auto;
     height: 1px;
     border: 0;
 }
 
 
-.seccion-perfil .tabla-carrito {
+.seccion-perfil .tabla-compra {
     border: 1px solid royalblue;
 }
 
-.seccion-perfil .tabla-carrito .cabecera-tabla {
+.seccion-perfil .tabla-compra .cabecera-tabla {
     display: flex;
     justify-content: space-between;
     padding: .5rem 0;
@@ -30,13 +33,13 @@
 }
 
 
-.seccion-perfil .tabla-carrito .cabecera-col {
+.seccion-perfil .tabla-compra .cabecera-col {
     width: 33.3%;
     text-align: center;
     font-weight: bold;
 }
 
-.seccion-perfil .tabla-carrito .cuerpo-tabla .producto-carrito {
+.seccion-perfil .tabla-compra .cuerpo-tabla .producto-compra {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,11 +47,11 @@
     background-color: #fff;
 }
 
-.seccion-perfil .tabla-carrito .cuerpo-tabla .producto-carrito:nth-child(even) {
+.seccion-perfil .tabla-compra .cuerpo-tabla .producto-compra:nth-child(even) {
     background-color: #f1f1f1;
 }
 
-.seccion-perfil .tabla-carrito .cuerpo-tabla .producto-carrito>* {
+.seccion-perfil .tabla-compra .cuerpo-tabla .producto-compra>* {
     width: 33.3%;
     text-align: center;
     border-right: 1px solid #ccc;
@@ -57,13 +60,111 @@
 
 }
 
-.seccion-perfil .tabla-carrito .cuerpo-tabla .producto-carrito button{
+.seccion-perfil .tabla-compra .cuerpo-tabla .producto-compra button {
     background-color: transparent;
     border: 0;
     cursor: pointer;
     color: royalblue;
     transition: all .4s ease;
 }
-.seccion-perfil .tabla-carrito .cuerpo-tabla .producto-carrito button:hover{
+
+.seccion-perfil .tabla-compra .cuerpo-tabla .producto-compra button:hover {
     opacity: .6;
+}
+
+.modal-detalle-compra {
+    display: flex;
+    background-color: rgba(0, 0, 0, .6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 999999;
+
+}
+
+.modal-detalle-compra .modal-body .btn-cerrar-modal {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #f1f1f1;
+    border: 0;
+    padding: .3rem;
+    border-radius: 50%;
+    color: rebeccapurple;
+    cursor: pointer;
+    transition: all .4s ease;
+}
+.modal-detalle-compra .modal-body .btn-cerrar-modal:hover{
+    background-color: #919191;
+    color: #fff;
+}
+.modal-detalle-compra .modal-body {
+    position: relative;
+    background: #fff;
+    max-width: 1100px;
+    margin: auto;
+    border-radius: 5px;
+    padding: 2.5rem 0;
+    min-width: 700px;
+
+}
+
+.modal-detalle-compra .modal-body .titulo-modal {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid royalblue;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.modal-detalle-compra .modal-body .datos-cabecera {
+    max-width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1px solid royalblue;
+    background-color: #f1f1f1;
+}
+.modal-detalle-compra .modal-body .datos-cabecera>*{
+    padding-right: .5rem;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    width: 25%;
+}
+.modal-detalle-compra .modal-body .datos-cabecera .datos-th:first-child{
+    max-width: 80px;
+}
+
+.modal-detalle-compra .modal-body .detalle-producto {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    max-width: 90%;
+    margin: auto;
+    font-size: 14px;
+}
+
+.modal-detalle-compra .modal-body .detalle-producto>* {
+    padding-right: .5rem;
+    border-right: 1px solid #ccc;
+    text-align: center;
+    width: 25%;
+}
+
+.modal-detalle-compra .modal-body .detalle-producto img {
+    max-width: 80px;
+}
+
+.msj-compras-vacio{
+    background-color: #ddd;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 2px solid royalblue;
 }

@@ -12,13 +12,14 @@ export const Carrito = () => {
     const {loadingSale, registrarVenta} = useSaleContext();
 
     const navigate = useNavigate();
+
     useEffect(() => {
         if (!loadingUser && !estaAutenticado) {
             navigate('/login')
         }
         listarProductosCarrito();
 
-    }, [])
+    }, [cart])
 
     const processSale = (venta) => {
         registrarVenta(venta);

@@ -18,34 +18,35 @@ function App() {
 
 
   return (
+    <CartProvider>
+      <UserProvider>
 
-    <UserProvider>
-      <CartProvider>
-      <SaleProvider>
+        <SaleProvider>
 
-        <Navbar />
+          <Navbar />
 
-        <Routes>
-          <Route path='/' element={<Tienda />} />
+          <Routes>
+            <Route path='/' element={<Tienda />} />
 
-          <Route path='/registro' element={<Registro />} />
+            <Route path='/registro' element={<Registro />} />
 
-          <Route path='/login' element={<Login />} />
+            <Route path='/login' element={<Login />} />
 
-          <Route path='/carrito' element={<Carrito />} />
+            <Route path='/carrito' element={<Carrito />} />
 
-          <Route path='/thanks' element={<ThanksSale />} />
+            <Route path='/thanks' element={<ThanksSale />} />
 
-          <Route path='/perfil' element={<Perfil />} />
+            <Route path='/perfil' element={<Perfil />} />
 
-        </Routes>
+          </Routes>
 
 
-        <Footer />
+          <Footer />
 
         </SaleProvider>
-      </CartProvider>
-    </UserProvider>
+
+      </UserProvider>
+    </CartProvider>
   )
 }
 

@@ -67,6 +67,10 @@ export const CartProvider = ({ children }) => {
     const obtenerCarrito = async () => {
           const response = await peticionAccederCarrito()
           setCart(response.data)
+          console.log('Carrito: ');
+          
+          console.log(response.data);
+          
     }
 
     const modificarCantidadProducto = async (id,nuevaCantidad,aumentar,subtotal) => {
@@ -91,13 +95,14 @@ export const CartProvider = ({ children }) => {
     }
 
     useEffect(() => {
-        obtenerCarrito();
+        //obtenerCarrito();
     }, [])
 
     return (
         <CartContext.Provider value={{
             addItem,
             productosCarrito,
+            obtenerCarrito,
             limpiarCarrito,
             listarProductosCarrito,
             quitarProductoCarrito,

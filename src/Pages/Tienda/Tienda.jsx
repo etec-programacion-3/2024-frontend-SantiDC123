@@ -23,15 +23,12 @@ export const Tienda = () => {
 
     }, [])
 
-    console.log(cart)
 
     return (
         <section className='pagina-tienda'>
             <h2>Nuestra tienda</h2>
 
-            <div className="contenedor-categorias">
-                <ListadoFiltrosCategorias />
-            </div>
+            
             <div className="contenedor contenedor-productos">
 
                 {
