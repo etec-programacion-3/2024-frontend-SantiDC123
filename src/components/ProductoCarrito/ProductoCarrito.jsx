@@ -23,6 +23,7 @@ export const ProductoCarrito = ({id,titulo,portada,precio,cantidad,stock}) => {
     }
     
     const {quitarProductoCarrito} = useCartContext();
+    
     const handleClick = (item) => {
         quitarProductoCarrito(item);
     }

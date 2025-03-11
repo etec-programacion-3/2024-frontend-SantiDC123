@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router'
 
 export const Login = () => {
   const navigate = useNavigate()
+
+
   
   const [formData, setFormData] = useState({
     email: "",
@@ -12,8 +14,11 @@ export const Login = () => {
   })
 
   const { loginUsuario, estaAutenticado, error: errorLogin } = useUserContext();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
+   /* email:"juan@gmail.com"
+    password:"12345"*/
   }
 
   const handleSubmit = (e) => {

@@ -9,7 +9,7 @@ import { useSaleContext } from '../../context/SaleContext'
 export const Carrito = () => {
     const {cart,limpiarCarrito, loadingCart, productosCarrito, listarProductosCarrito, totalCarrito } = useCartContext();
     const { estaAutenticado, loadingUser } = useUserContext();
-    const {loadingSale, registrarVenta} = useSaleContext();
+    const {registrarVenta} = useSaleContext();
 
     const navigate = useNavigate();
 

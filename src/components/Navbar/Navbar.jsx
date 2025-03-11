@@ -13,6 +13,7 @@ export const Navbar = () => {
 
                 <nav className='menu'>
                     <ul className='listado-menu'>
+                       
                         <li className='item-menu'><Link to="/" className='enlace-menu'>Home</Link></li>
                         {
                             estaAutenticado

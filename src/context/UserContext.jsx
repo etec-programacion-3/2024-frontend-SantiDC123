@@ -15,6 +15,7 @@ export const useUserContext = () => {
 
 export const UserProvider = ({ children }) => {
     const {obtenerCarrito,setCart} = useCartContext();
+
     const [usuario, setUsuario] = useState(null)
     const [estaAutenticado, setEstaAutenticado] = useState(false)
     const [loadingUser, setLoadingUser] = useState(true);
@@ -23,7 +24,7 @@ export const UserProvider = ({ children }) => {
     const registrarUsuario = async (usuario) => {
         try {
             const response = await peticionRegistrarUsuario(usuario);
-            setUsuario(response.data);
+            setUsuario(response.data.usuario);
             setEstaAutenticado(true)
         } catch (error) {
             console.log(error.response.data)
@@ -59,8 +60,8 @@ export const UserProvider = ({ children }) => {
                 const response = await peticionVerificarLogin()
                 setUsuario(response.data)
                 setEstaAutenticado(true)
-                 setLoadingUser(false);
-                 obtenerCarrito();
+                setLoadingUser(false);
+                obtenerCarrito();
                 
             } catch (error) {
                 console.log(error);

@@ -10,7 +10,7 @@ export const Tienda = () => {
     const { cart } = useCartContext();
     const [listadoProductos, setListadoProductos] = useState([])
 
-    
+
 
     useEffect(() => {
         async function listar() {
@@ -18,9 +18,6 @@ export const Tienda = () => {
             setListadoProductos(listadoProductosAPI.data)
         }
         listar();
-
-     
-
     }, [])
 
 
@@ -28,15 +25,29 @@ export const Tienda = () => {
         <section className='pagina-tienda'>
             <h2>Nuestra tienda</h2>
 
-            
+
             <div className="contenedor contenedor-productos">
 
                 {
                     (listadoProductos && listadoProductos.length > 0)
                         ?
                         listadoProductos.map((producto) => {
+                            let mostrarStock = true;
+                            let stockDisponible = producto.stock
+                            if (cart.length > 0) {
+                                let prodEncontrado = cart.find((prodCart) => prodCart.product == producto._id)
+
+                                if (prodEncontrado) {
+                                    if (prodEncontrado.cantidad >= producto.stock) {
+                                        mostrarStock = false;
+                                    }else{
+                                        stockDisponible = stockDisponible - prodEncontrado.cantidad;
+                                    }
+                                }
+                            }
+
                             return (
-                                <CardProducto key={producto._id} id={producto._id} titulo={producto.titulo} portada={producto.portada} descripcion={producto.descripcion} precio={producto.precio} stock={producto.stock} />
+                                <CardProducto key={producto._id} id={producto._id} titulo={producto.titulo} portada={producto.portada} descripcion={producto.descripcion} precio={producto.precio} stock={producto.stock} stockDisponible={stockDisponible} mostrarStock={mostrarStock} />
                             );
                         })
 
