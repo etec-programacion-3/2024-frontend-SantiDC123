@@ -12,18 +12,26 @@ export const useSaleContext = () => {
 }
 
 export const SaleProvider = ({ children }) => {
-    const [loadingSale,setLoadingSale] = useState(true);
+    const [loadingSale, setLoadingSale] = useState(true);
     const [listadoComprasCliente, setListadoComprasCliente] = useState([]);
+    const [errorsSale, setErrorsSale] = useState([])
+    const [ventaProcesada, setVentaProcesada] = useState(false)
 
     const registrarVenta = async (venta) => {
+        setLoadingSale(true)
         try {
             await peticionRegistrarVenta(venta);
-            setLoadingSale(false)
+            setErrorsSale([])
+            setVentaProcesada(true)
         } catch (error) {
             console.log(error);
+            setErrorsSale(error.response.data)
+            setVentaProcesada(false)
+        }
+        finally{
             setLoadingSale(false)
         }
-     
+        
     }
 
     const listarComprasCliente = async () => {
@@ -44,13 +52,32 @@ export const SaleProvider = ({ children }) => {
         }
     }
 
+    useEffect(() => {
+        if (errorsSale.length > 0) {
+            const timer = setTimeout(() => {
+                setErrorsSale([])
+            }, 45000)
+            return () => clearTimeout(timer)
+        }
+    }, [errorsSale])
+
+    const restablecerEstadoSale = () => {
+        setVentaProcesada(false)
+        setErrorsSale([])
+        setLoadingSale(false)
+    }
+
     return (
         <SaleContext.Provider value={{
+            setLoadingSale,
             loadingSale,
             registrarVenta,
             listarComprasCliente,
             listarDetalleVenta,
-            listadoComprasCliente
+            listadoComprasCliente,
+            errorsSale,
+            ventaProcesada,
+            restablecerEstadoSale
         }}>
             {children}
         </SaleContext.Provider>

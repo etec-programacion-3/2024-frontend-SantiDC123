@@ -131,7 +131,7 @@
     max-width: 600px;
     margin: auto;
     padding: 2rem;
-    box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4);
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
 
     h4 {
         margin-bottom: 1rem;
@@ -143,4 +143,49 @@
         color: royalblue;
         text-decoration: none;
     }
+}
+
+
+.sale-errors-container {
+    background: #d22f2f9e;
+    color: #fff;
+    padding: .3rem 1.2rem;
+    margin-bottom: .5rem;
+    height: 0;
+    transition: all 1s ease;
+    opacity: 0;
+    overflow: hidden;
+    .cabecera {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: .5rem;
+        h5{
+            font-size: 16px;
+        }
+        button {
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+            background-color: transparent;
+            transition: opacity .4s ease;
+            opacity: .7;
+            width: 14px;
+
+            &:hover {
+                opacity: 1;
+
+            }
+        }
+    }
+
+    p {
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+
+}
+.sale-errors-container--visible{
+    opacity: 1;
+   height: 100px;
+   overflow: auto;
 }
