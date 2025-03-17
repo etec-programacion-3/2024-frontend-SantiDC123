@@ -1,0 +1,201 @@
+.seccion-panel {
+    padding: 2rem 0;
+    min-height: 100vh;
+}
+
+.seccion-panel h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.seccion-panel hr {
+    max-width: 500px;
+    margin: auto;
+    border: 1px solid royalblue;
+    margin-bottom: 2rem;
+}
+
+.seccion-panel .tabla-panel {
+    border: 1px solid royalblue;
+}
+
+.seccion-panel .tabla-panel .cabecera-tabla {
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem 0;
+    background-color: #f1f1f1;
+}
+
+.seccion-panel .tabla-panel .cabecera-col {
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.seccion-panel .tabla-panel .cuerpo-tabla .producto-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #000;
+    background-color: #fff;
+}
+
+.seccion-panel .tabla-panel .cuerpo-tabla .producto-panel:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+.seccion-panel .tabla-panel .cuerpo-tabla .producto-panel>* {
+    width: 20%;
+    text-align: center;
+    border-right: 1px solid #ccc;
+    max-height: 120px;
+    padding: 2rem .5rem;
+
+}
+
+.seccion-panel .tabla-panel .cuerpo-tabla .producto-panel img {
+    padding: .5rem;
+    aspect-ratio: 1;
+    object-fit: contain;
+}
+
+.seccion-panel .tabla-panel .cuerpo-tabla .producto-panel .contenedor-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seccion-panel .tabla-panel .cuerpo-tabla .producto-panel .btn-quitar-producto {
+    border: 1px solid #c32c2c;
+    color: #c32c2c;
+    background-color: transparent;
+    border-radius: 30px;
+    display: block;
+    margin-right: .5rem;
+    cursor: pointer;
+    padding: .3rem 1rem;
+    transition: all .4s ease;
+}
+
+.seccion-panel .tabla-panel .cuerpo-tabla .producto-panel .btn-quitar-producto:hover {
+    background-color: #c32c2c;
+    color: #fff;
+}
+
+.seccion-panel .tabla-panel .cuerpo-tabla .producto-panel .btn-modificar-producto {
+    border: 1px solid royalblue;
+    color: royalblue;
+    background-color: transparent;
+    border-radius: 30px;
+    display: block;
+    margin-right: .5rem;
+    cursor: pointer;
+    padding: .3rem 1rem;
+    transition: all .4s ease;
+}
+.seccion-panel .tabla-panel .cuerpo-tabla .producto-panel .btn-modificar-producto:hover {
+    background-color: royalblue;
+    color: #fff;
+}
+
+
+
+.seccion-panel .tabla-panel .pie-tabla {
+    border-top: 1px solid royalblue;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seccion-panel .tabla-panel .pie-tabla .parrafo-total {
+    font-weight: bold;
+    border-bottom: 2px solid royalblue;
+    padding: .3rem 1rem;
+}
+
+.seccion-panel .tabla-panel .pie-tabla .btn-confirmar-compra {
+    display: block;
+    margin-top: 1rem;
+    background-color: royalblue;
+    color: #fff;
+    padding: .6rem 1.5rem;
+    border-radius: 3px;
+    border: 0;
+    cursor: pointer;
+    transition: opacity .4s ease-in-out;
+}
+
+.seccion-panel .tabla-panel .pie-tabla .btn-confirmar-compra:hover {
+    opacity: .6;
+}
+
+.seccion-panel .alert-panel {
+    text-align: center;
+    border-bottom: 1px solid royalblue;
+    background-color: #f1f1f1;
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem;
+    box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.4);
+
+    h4 {
+        margin-bottom: 1rem;
+        font-size: 32px;
+    }
+
+
+    a {
+        color: royalblue;
+        text-decoration: none;
+    }
+}
+
+
+.sale-errors-container {
+    background: #d22f2f9e;
+    color: #fff;
+    padding: .3rem 1.2rem;
+    margin-bottom: .5rem;
+    height: 0;
+    transition: all 1s ease;
+    opacity: 0;
+    overflow: hidden;
+
+    .cabecera {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: .5rem;
+
+        h5 {
+            font-size: 16px;
+        }
+
+        button {
+            cursor: pointer;
+            color: #fff;
+            border: 0;
+            background-color: transparent;
+            transition: opacity .4s ease;
+            opacity: .7;
+            width: 14px;
+
+            &:hover {
+                opacity: 1;
+
+            }
+        }
+    }
+
+    p {
+        font-size: 14px;
+        margin-bottom: 0;
+    }
+
+}
+
+.sale-errors-container--visible {
+    opacity: 1;
+    height: 100px;
+    overflow: auto;
+}

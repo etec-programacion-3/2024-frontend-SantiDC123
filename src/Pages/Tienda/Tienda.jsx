@@ -32,7 +32,7 @@ export const Tienda = () => {
                     (listadoProductos && listadoProductos.length > 0)
                         ?
                         listadoProductos.map((producto) => {
-                            let mostrarStock = true;
+                            let mostrarStock = producto.stock > 0;
                             let stockDisponible = producto.stock
                             if (cart.length > 0) {
                                 let prodEncontrado = cart.find((prodCart) => prodCart.product == producto._id)
@@ -46,9 +46,12 @@ export const Tienda = () => {
                                 }
                             }
 
-                            return (
-                                <CardProducto key={producto._id} id={producto._id} titulo={producto.titulo} portada={producto.portada} descripcion={producto.descripcion} precio={producto.precio} stock={producto.stock} stockDisponible={stockDisponible} mostrarStock={mostrarStock} />
-                            );
+                            if(mostrarStock){
+                                return (
+                                    <CardProducto key={producto._id} id={producto._id} titulo={producto.titulo} portada={producto.portada} descripcion={producto.descripcion} precio={producto.precio} stock={producto.stock} stockDisponible={stockDisponible} mostrarStock={mostrarStock} />
+                                );
+                            }
+                            
                         })
 
                         :

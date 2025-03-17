@@ -12,6 +12,7 @@ import { CartProvider } from './context/CartContext'
 import { SaleProvider } from './context/SaleContext'
 import { ThanksSale } from './Pages/ThanksSale/ThanksSale'
 import { Perfil } from './Pages/Perfil/Perfil'
+import { Panel } from './Pages/Admin/Panel/panel'
 
 function App() {
 
@@ -37,6 +38,8 @@ function App() {
             <Route path='/thanks' element={<ThanksSale />} />
 
             <Route path='/perfil' element={<Perfil />} />
+
+            <Route path='/panel' element={<Panel />} />
 
           </Routes>
 

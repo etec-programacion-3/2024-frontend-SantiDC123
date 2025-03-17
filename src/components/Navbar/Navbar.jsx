@@ -4,8 +4,9 @@ import { useUserContext } from '../../context/UserContext'
 
 export const Navbar = () => {
 
-    const { estaAutenticado, logoutUsuario } = useUserContext();
-
+    const { estaAutenticado, logoutUsuario, usuario } = useUserContext();
+    
+    
     return (
         <header className='main-header'>
             <div className="contenedor">
@@ -13,7 +14,7 @@ export const Navbar = () => {
 
                 <nav className='menu'>
                     <ul className='listado-menu'>
-                       
+
                         <li className='item-menu'><Link to="/" className='enlace-menu'>Home</Link></li>
                         {
                             estaAutenticado
@@ -21,6 +22,10 @@ export const Navbar = () => {
                                 <>
                                     <li className='item-menu'><Link to="/perfil" className='enlace-menu'>Perfil</Link></li>
                                     <li className='item-menu'><Link to="/carrito" className='enlace-menu'>Carrito</Link></li>
+                                    {
+                                        usuario.rol == 'admin' &&
+                                        <li className='item-menu'><Link to="/panel" className='enlace-menu'>Panel</Link></li>
+                                    }
                                     <li className='item-menu'><Link to="/login" onClick={logoutUsuario} className='enlace-menu'>Salir</Link></li>
 
                                 </>
@@ -31,7 +36,7 @@ export const Navbar = () => {
                                 </>
                         }
 
-                       
+
                     </ul>
                 </nav>
             </div>

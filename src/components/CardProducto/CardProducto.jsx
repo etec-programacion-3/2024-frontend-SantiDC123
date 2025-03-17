@@ -13,8 +13,9 @@ export const CardProducto = ({ id, titulo, portada, descripcion, precio, stockRe
 
 
     const addItemConfirm = async () => {
-
-        if (await addItem({ id, cantidad, precio, stockReal })) {
+        console.log(stockDisponible);
+        if (stockDisponible >= cantidad) {
+            await addItem({ id, cantidad, precio, stockReal })
             Toastify({
                 text: "Producto agregado",
                 duration: 3000,
@@ -28,6 +29,7 @@ export const CardProducto = ({ id, titulo, portada, descripcion, precio, stockRe
                     y: 70 // vertical axis - can be a number or a string indicating unity. eg: '2em'
                 },
             }).showToast();
+
         } else {
             Toastify({
                 text: "Error: Ha superado el stock disponible.",
@@ -45,6 +47,8 @@ export const CardProducto = ({ id, titulo, portada, descripcion, precio, stockRe
         }
 
 
+
+
     }
     return (
         <article className="producto">
@@ -55,7 +59,7 @@ export const CardProducto = ({ id, titulo, portada, descripcion, precio, stockRe
             <span className='precio-producto'>${precio}</span>
 
             {
-                mostrarStock
+                mostrarStock 
                     ?
                     <>
                         <span className='precio-producto'>Unidades disponibles: {stockDisponible}</span>
