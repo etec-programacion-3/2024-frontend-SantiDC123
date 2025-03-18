@@ -13,6 +13,9 @@ import { SaleProvider } from './context/SaleContext'
 import { ThanksSale } from './Pages/ThanksSale/ThanksSale'
 import { Perfil } from './Pages/Perfil/Perfil'
 import { Panel } from './Pages/Admin/Panel/panel'
+import { RutasProtegidasAdmin } from './RutasProtegidasAdmin'
+import { NuevoProducto } from './Pages/Admin/Panel/NuevoProducto/NuevoProducto'
+import { ModificarProducto } from './Pages/Admin/Panel/ModificarProducto/ModificarProducto'
 
 function App() {
 
@@ -39,7 +42,13 @@ function App() {
 
             <Route path='/perfil' element={<Perfil />} />
 
-            <Route path='/panel' element={<Panel />} />
+            <Route element={<RutasProtegidasAdmin />}>
+              <Route path='/panel' element={<Panel />} />
+              <Route path='panel/producto/nuevo' element={<NuevoProducto />} />
+              <Route path='panel/producto/modificar/:id' element={<ModificarProducto />} />
+
+            </Route>
+
 
           </Routes>
 

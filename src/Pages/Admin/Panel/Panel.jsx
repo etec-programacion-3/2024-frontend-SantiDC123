@@ -2,47 +2,27 @@ import { useEffect, useState } from "react"
 import "./Panel.css"
 import { ProductoPanel } from "./ProductoPanel"
 import { listarProductos } from "../../../api/product"
-import { useUserContext } from "../../../context/UserContext"
-import { useNavigate } from "react-router"
+import { Link } from "react-router"
+
 
 export const Panel = () => {
     const [listadoProductos, setListadoProductos] = useState([])
-    const { estaAutenticado, logoutUsuario, usuario } = useUserContext();
-    const navigate = useNavigate();
-
-    console.log(usuario);
-
-
     useEffect(() => {
         async function listar() {
             const listadoProductosAPI = await listarProductos();
             setListadoProductos(listadoProductosAPI.data)
         }
         listar();
-
-
-        /*
-        if (usuario.rol != 'admin') {
-         //   navigate('/')
-         console.log('no es admin');
-         
-        }
-         */
     }, [])
 
-    useEffect(() => {
-        if (usuario && usuario.rol != 'admin') {
-            navigate('/')
-        }
-    }, [usuario])
-
-
+    
     return (
 
         <section className="seccion-panel">
             <h2>Panel de administración</h2>
 
             <div className="contenedor">
+                <Link to="producto/nuevo" className="btn-nuevo-prod">Nuevo Producto</Link>
                 <div className="tabla-panel">
                     <div className="cabecera-tabla">
                         <div className="cabecera-col">Producto</div>
@@ -55,7 +35,7 @@ export const Panel = () => {
                         {
                             listadoProductos.map((producto) => {
                                 return <ProductoPanel
-                                    key={producto.id} id={producto.id} titulo={producto.titulo} portada={producto.portada} precio={producto.precio} stock={producto.stock} />
+                                    key={producto._id} id={producto._id} titulo={producto.titulo} portada={producto.portada} precio={producto.precio} stock={producto.stock} />
                             })
 
                         }

@@ -1,0 +1,48 @@
+.seccion-nuevo-prod{
+    padding: 3rem 0;
+    h2{
+        text-align: center;
+    }
+    .form-nuevo-prod{
+        max-width: 500px;
+        margin: auto;
+      box-shadow: 0px 1px 5px 3px rgba(65, 105, 225, 0.253);
+        padding: 1.5rem;
+        margin-top: 1rem;
+        border-radius: 10px;
+        background-color: #f1f1f1;
+        div{
+            margin-bottom: 1.5rem;
+            label{
+                display: block;
+            }
+            input,textarea{
+                display: block;
+                width: 100%;
+                border-radius: 10px;
+                border: 1px solid royalblue;
+                padding: .5rem;
+                background-color: #fff;
+            }
+            input:focus-visible, textarea:focus-visible{
+                outline: 0;
+                box-shadow: 0px 1px 5px 3px rgba(65, 105, 225, 0.253) ;
+            }
+        }
+        .btn-guardar{
+            border: 1px solid royalblue;
+            color: #fff;
+            background-color: royalblue;
+            display: block;
+            margin: auto;
+            padding: .3rem 1.3rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all .4s ease;
+            &:hover{
+                background-color: #fff;
+                color: royalblue;
+            }
+        }
+    }
+}

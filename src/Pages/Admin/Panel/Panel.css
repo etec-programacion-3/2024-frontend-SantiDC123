@@ -93,6 +93,7 @@
     padding: .3rem 1rem;
     transition: all .4s ease;
 }
+
 .seccion-panel .tabla-panel .cuerpo-tabla .producto-panel .btn-modificar-producto:hover {
     background-color: royalblue;
     color: #fff;
@@ -198,4 +199,16 @@
     opacity: 1;
     height: 100px;
     overflow: auto;
+}
+
+.seccion-panel .btn-nuevo-prod {
+    display: block;
+    width: fit-content;
+    margin: 2rem auto;
+    margin-bottom: 1rem;
+    background-color: royalblue;
+    text-decoration: none;
+    color: #fff;
+    padding: .4rem 1.5rem;
+    border-radius: 5px;
 }
