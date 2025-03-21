@@ -4,6 +4,7 @@ import { useCartContext } from "../../context/CartContext";
 import { useState } from "react";
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
+import { SERVER_URL } from "../../utils/utils";
 
 export const CardProducto = ({ id, titulo, portada, descripcion, precio, stockReal, stockDisponible, mostrarStock }) => {
     const { estaAutenticado } = useUserContext();
@@ -52,8 +53,7 @@ export const CardProducto = ({ id, titulo, portada, descripcion, precio, stockRe
     }
     return (
         <article className="producto">
-
-            <img src={`/productos/${portada}`} alt="" className="img-producto" />
+            <img src={`${SERVER_URL+portada}`} alt="" className="img-producto" />
             <h4 className="titulo-producto">{titulo}</h4>
             <p className="descripcion-producto">{descripcion}</p>
             <span className='precio-producto'>${precio}</span>

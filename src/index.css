@@ -14,3 +14,6 @@
   max-width: 90%;
   margin: auto;
 }
+.text-error{
+  color: rgb(179, 31, 31);
+}

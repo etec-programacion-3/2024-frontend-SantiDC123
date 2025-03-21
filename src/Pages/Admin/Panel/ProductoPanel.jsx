@@ -1,10 +1,11 @@
 import { Link } from 'react-router'
+import { SERVER_URL } from '../../../utils/utils'
 
 export const ProductoPanel = ({ id, titulo, portada, precio, stock }) => {
-    
+
     return (
         <article className="producto-panel">
-            <img className='img-producto-panel' src={`/productos/${portada}`} alt="producto panel" />
+            <img className='img-producto-panel' src={`${SERVER_URL + portada}`} alt="producto panel" />
             <h3>{titulo}</h3>
             <p className='precio-producto-panel'>${precio}</p>
             <p className='subtotal-producto-panel'>{stock}</p>
@@ -16,8 +17,8 @@ export const ProductoPanel = ({ id, titulo, portada, precio, stock }) => {
                     </svg>
 
                 </button>
-      
-      
+
+
                 <Link to={`producto/modificar/${id}`} className='btn-modificar-producto'>
                     <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.779 17.779 4.36 19.918 6.5 13.5m4.279 4.279 8.364-8.643a3.027 3.027 0 0 0-2.14-5.165 3.03 3.03 0 0 0-2.14.886L6.5 13.5m4.279 4.279L6.499 13.5m2.14 2.14 6.213-6.504M12.75 7.04 17 11.28" />

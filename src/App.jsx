@@ -16,6 +16,7 @@ import { Panel } from './Pages/Admin/Panel/panel'
 import { RutasProtegidasAdmin } from './RutasProtegidasAdmin'
 import { NuevoProducto } from './Pages/Admin/Panel/NuevoProducto/NuevoProducto'
 import { ModificarProducto } from './Pages/Admin/Panel/ModificarProducto/ModificarProducto'
+import { ProductProvider } from './context/ProductContext'
 
 function App() {
 
@@ -26,35 +27,38 @@ function App() {
       <UserProvider>
 
         <SaleProvider>
-
-          <Navbar />
-
-          <Routes>
-            <Route path='/' element={<Tienda />} />
-
-            <Route path='/registro' element={<Registro />} />
-
-            <Route path='/login' element={<Login />} />
-
-            <Route path='/carrito' element={<Carrito />} />
-
-            <Route path='/thanks' element={<ThanksSale />} />
-
-            <Route path='/perfil' element={<Perfil />} />
-
-            <Route element={<RutasProtegidasAdmin />}>
-              <Route path='/panel' element={<Panel />} />
-              <Route path='panel/producto/nuevo' element={<NuevoProducto />} />
-              <Route path='panel/producto/modificar/:id' element={<ModificarProducto />} />
-
-            </Route>
+          <ProductProvider>
 
 
-          </Routes>
+            <Navbar />
+
+            <Routes>
+              <Route path='/' element={<Tienda />} />
+
+              <Route path='/registro' element={<Registro />} />
+
+              <Route path='/login' element={<Login />} />
+
+              <Route path='/carrito' element={<Carrito />} />
+
+              <Route path='/thanks' element={<ThanksSale />} />
+
+              <Route path='/perfil' element={<Perfil />} />
+
+              <Route element={<RutasProtegidasAdmin />}>
+                <Route path='/panel' element={<Panel />} />
+                <Route path='panel/producto/nuevo' element={<NuevoProducto />} />
+                <Route path='panel/producto/modificar/:id' element={<ModificarProducto />} />
+
+              </Route>
 
 
-          <Footer />
+            </Routes>
 
+
+            <Footer />
+
+          </ProductProvider>
         </SaleProvider>
 
       </UserProvider>

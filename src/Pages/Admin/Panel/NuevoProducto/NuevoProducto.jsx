@@ -1,22 +1,33 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './NuevoProducto.css'
-export const NuevoProducto = () => {
-    const [formValues, setFormValues] = useState({ titulo: '', precio: '', stock: '', descripcion: '' })
-    const [portada, setPortada] = useState(null)
+import { useProductContext } from '../../../../context/ProductContext'
+import { useNavigate } from 'react-router'
 
+export const NuevoProducto = () => {
+    const [formValues, setFormValues] = useState({ titulo: '', precio: '',categoria:'', stock: '', descripcion: '' })
+    const [portada, setPortada] = useState(null)
+    const { crearProducto, productoCreado, error, loadingProduct } = useProductContext();
+
+    const navigate = useNavigate();
     const handleInputChange = (e) => {
         setFormValues({ ...formValues, [e.target.name]: e.target.value })
     }
     const handleImgChange = (e) => {
         setPortada(e.target.files[0]);
     }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formValues);
-        console.log(portada);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        crearProducto({ ...formValues, portada });
     }
+
+    useEffect(() => {
+        if (productoCreado) {
+            alert('Producto creado con éxito')
+            navigate('/panel');
+        }
+    }, [productoCreado])
     return (
         <section className="seccion-nuevo-prod">
             <h2>Nuevo producto</h2>
@@ -35,6 +46,10 @@ export const NuevoProducto = () => {
                         <input onChange={(e) => handleInputChange(e)} name='precio' type="number" min={1} />
                     </div>
                     <div>
+                        <label htmlFor="">Categoría</label>
+                        <input onChange={(e) => handleInputChange(e)} name='categoria' type="text" />
+                    </div>
+                    <div>
                         <label htmlFor="">Stock</label>
                         <input onChange={(e) => handleInputChange(e)} name='stock' type="number" min={1} />
                     </div>
@@ -42,7 +57,13 @@ export const NuevoProducto = () => {
                         <label htmlFor="">Descripción</label>
                         <textarea onChange={(e) => handleInputChange(e)} name="descripcion" rows={5}></textarea>
                     </div>
-                    <button className='btn-guardar' type='submit'>Guardar</button>
+                    <div>
+                        {
+                            error &&
+                            <p className='text-error'>{error}</p>
+                        }
+                    </div>
+                    <button className='btn-guardar' type='submit'> {loadingProduct ? 'Procesando..' : 'Guardar'} </button>
                 </form>
             </div>
         </section>
