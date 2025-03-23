@@ -1,8 +1,19 @@
 import { Link } from 'react-router'
 import { SERVER_URL } from '../../../utils/utils'
+import { useProductContext } from '../../../context/ProductContext'
+import { useEffect } from 'react';
 
 export const ProductoPanel = ({ id, titulo, portada, precio, stock }) => {
 
+    const { eliminarProducto, productoEliminado } = useProductContext();
+         /* useEffect(() => {
+  
+        if (productoEliminado) {
+            alert('Producto Eliminado con éxito');
+        }
+        
+    }, [productoEliminado])
+        */
     return (
         <article className="producto-panel">
             <img className='img-producto-panel' src={`${SERVER_URL + portada}`} alt="producto panel" />
@@ -10,7 +21,7 @@ export const ProductoPanel = ({ id, titulo, portada, precio, stock }) => {
             <p className='precio-producto-panel'>${precio}</p>
             <p className='subtotal-producto-panel'>{stock}</p>
             <div className="contenedor-btn">
-                <button className='btn-quitar-producto'>
+                <button className='btn-quitar-producto' onClick={() => eliminarProducto(id)} >
 
                     <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
                         <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 7h14m-9 3v8m4-8v8M10 3h4a1 1 0 0 1 1 1v3H9V4a1 1 0 0 1 1-1ZM6 7h12v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7Z" />

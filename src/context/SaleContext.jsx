@@ -55,7 +55,7 @@ export const SaleProvider = ({ children }) => {
     useEffect(() => {
         if (errorsSale.length > 0) {
             const timer = setTimeout(() => {
-                setErrorsSale([])
+                limpiarErrores()
             }, 45000)
             return () => clearTimeout(timer)
         }
@@ -67,6 +67,10 @@ export const SaleProvider = ({ children }) => {
         setLoadingSale(false)
     }
 
+    const limpiarErrores = () => {
+        setErrorsSale([])
+    }
+
     return (
         <SaleContext.Provider value={{
             setLoadingSale,
@@ -76,6 +80,7 @@ export const SaleProvider = ({ children }) => {
             listarDetalleVenta,
             listadoComprasCliente,
             errorsSale,
+            limpiarErrores,
             ventaProcesada,
             restablecerEstadoSale
         }}>

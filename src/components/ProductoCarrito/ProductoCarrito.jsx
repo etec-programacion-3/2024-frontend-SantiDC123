@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useCartContext } from "../../context/CartContext"
+import { SERVER_URL } from "../../utils/utils";
 
 
 export const ProductoCarrito = ({id,titulo,portada,precio,cantidad,stock}) => {
@@ -29,7 +30,7 @@ export const ProductoCarrito = ({id,titulo,portada,precio,cantidad,stock}) => {
     }
     return (
         <article className="producto-carrito">
-            <img src={`/productos/${portada}`} alt="producto carrito" />
+            <img src={SERVER_URL+portada} alt="producto carrito" />
             <h3>{titulo}</h3>
             <div className="contenedor-cantidad">
                 <button onClick={() => disminuirCantidad(id)} className='btnDisminuirCantidad'>-</button>

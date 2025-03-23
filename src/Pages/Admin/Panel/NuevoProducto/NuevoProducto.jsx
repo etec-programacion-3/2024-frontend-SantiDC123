@@ -43,7 +43,7 @@ export const NuevoProducto = () => {
                     </div>
                     <div>
                         <label htmlFor="">Precio</label>
-                        <input onChange={(e) => handleInputChange(e)} name='precio' type="number" min={1} />
+                        <input onChange={(e) => handleInputChange(e)} name='precio' type="number" min={0} />
                     </div>
                     <div>
                         <label htmlFor="">Categoría</label>
@@ -51,7 +51,7 @@ export const NuevoProducto = () => {
                     </div>
                     <div>
                         <label htmlFor="">Stock</label>
-                        <input onChange={(e) => handleInputChange(e)} name='stock' type="number" min={1} />
+                        <input onChange={(e) => handleInputChange(e)} name='stock' type="number" min={0} />
                     </div>
                     <div>
                         <label htmlFor="">Descripción</label>

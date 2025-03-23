@@ -9,7 +9,7 @@ import { useSaleContext } from '../../context/SaleContext'
 export const Carrito = () => {
     const { cart, limpiarCarrito, loadingCart, productosCarrito, listarProductosCarrito, totalCarrito } = useCartContext();
     const { estaAutenticado, loadingUser } = useUserContext();
-    const { registrarVenta, errorsSale, loadingSale, ventaProcesada, restablecerEstadoSale } = useSaleContext();
+    const { registrarVenta, limpiarErrores, errorsSale, ventaProcesada, restablecerEstadoSale } = useSaleContext();
 
     const [showErrors, setShowErrors] = useState(false);
 
@@ -25,6 +25,10 @@ export const Carrito = () => {
 
     const processSale = async (venta) => {
         await registrarVenta(venta);
+    }
+    const ocultarErrores = () => {
+        limpiarErrores();
+        setShowErrors(false)
     }
     useEffect(() => {
         if (ventaProcesada) {
@@ -49,7 +53,7 @@ export const Carrito = () => {
                 <div className={`sale-errors-container ${showErrors && 'sale-errors-container--visible'}`}>
                     <div className="cabecera">
                         <h5>Ha ocurrido un error al intentar confirmar la compra, lo siguientes productos no poseen stock suficiente: </h5>
-                        <button onClick={() => setShowErrors(false)}><svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
+                        <button onClick={ocultarErrores}><svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m15 9-6 6m0-6 6 6m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
                         </button>
