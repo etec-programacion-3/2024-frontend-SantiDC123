@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { peticionCrearProducto, peticionEliminarProducto, peticionListarDetalleProducto, peticionModificarProducto } from "../api/product";
+import { peticionCrearProducto, peticionEliminarProducto, peticionListarDetalleProducto, peticionListarProductos, peticionModificarProducto } from "../api/product";
 
 export const ProductContext = createContext()
 
@@ -14,6 +14,7 @@ export const useProductContext = () => {
 
 
 export const ProductProvider = ({ children }) => {
+    const [listadoProductos, setListadoProductos] = useState([])
     const [loadingProduct, setLoadingProduct] = useState(false);
     const [productoCreado, setProductoCreado] = useState(null)
     const [productoModificado, setProductoModificado] = useState(null)
@@ -22,6 +23,20 @@ export const ProductProvider = ({ children }) => {
     const [formModificar, setFormModificar] = useState({ titulo: '', precio: '', portada: '', stock: '', descripcion: '' })
     const [error, setError] = useState([])
 
+    const listarProductos = async () => {
+
+        try {
+            setLoadingProduct(true)
+            const response = await peticionListarProductos();
+            setListadoProductos(response.data)
+        } catch (error) {
+            console.log(error);
+            setError([error.response.data.message])
+        } finally {
+            setLoadingProduct(false)
+        }
+
+    }
     const crearProducto = async (producto) => {
         setLoadingProduct(true)
         try {
@@ -62,7 +77,11 @@ export const ProductProvider = ({ children }) => {
         setLoadingProduct(true)
         try {
             const response = await peticionEliminarProducto(id)
+            console.log(response.data);
+
             if (response.status === 204) {
+                const updatedProducts = listadoProductos.filter((producto) => producto._id != id)
+                setListadoProductos(updatedProducts);
                 setProductoEliminado(true)
                 setTimeout(() => {
                     setProductoEliminado(null)
@@ -90,8 +109,14 @@ export const ProductProvider = ({ children }) => {
 
         setLoadingProduct(false)
     }
+
+    const limpiarError = () => {
+        setError([])
+    }
     return (
         <ProductContext.Provider value={{
+            listarProductos,
+            listadoProductos,
             crearProducto,
             listarDetalleProducto,
             modificarProducto,
@@ -104,7 +129,8 @@ export const ProductProvider = ({ children }) => {
             productoCreado,
             detalleProducto,
             loadingProduct,
-            error
+            error,
+            limpiarError
         }}>
             {children}
         </ProductContext.Provider>

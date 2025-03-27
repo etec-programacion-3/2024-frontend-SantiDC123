@@ -1,23 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import './Tienda.css';
 import { CardProducto } from '../../components/CardProducto/CardProducto';
-import { ListadoFiltrosCategorias } from '../../components/ListadoFiltrosCategorias/ListadoFiltrosCategorias';
-import { listarProductos } from '../../api/product';
 import { useCartContext } from '../../context/CartContext';
+import { useProductContext } from '../../context/ProductContext';
 
 
 export const Tienda = () => {
     const { cart } = useCartContext();
-    const [listadoProductos, setListadoProductos] = useState([])
-
+    const { listarProductos, listadoProductos } = useProductContext()
 
 
     useEffect(() => {
-        async function listar() {
-            const listadoProductosAPI = await listarProductos();
-            setListadoProductos(listadoProductosAPI.data)
-        }
-        listar();
+        listarProductos();
     }, [])
 
 
@@ -40,18 +34,18 @@ export const Tienda = () => {
                                 if (prodEncontrado) {
                                     if (prodEncontrado.cantidad >= producto.stock) {
                                         mostrarStock = false;
-                                    }else{
+                                    } else {
                                         stockDisponible = stockDisponible - prodEncontrado.cantidad;
                                     }
                                 }
                             }
 
-                            if(mostrarStock){
+                            if (mostrarStock) {
                                 return (
                                     <CardProducto key={producto._id} id={producto._id} titulo={producto.titulo} portada={producto.portada} descripcion={producto.descripcion} precio={producto.precio} stock={producto.stock} stockDisponible={stockDisponible} mostrarStock={mostrarStock} />
                                 );
                             }
-                            
+
                         })
 
                         :

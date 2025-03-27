@@ -1,6 +1,6 @@
 import axios from './axios'
 
-export const listarProductos = () => axios.get('/product')
+export const peticionListarProductos = () => axios.get('/product')
 
 export const peticionEliminarProducto = (id) => axios.delete(`product/delete/${id}`)
 
