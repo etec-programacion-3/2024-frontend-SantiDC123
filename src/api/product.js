@@ -1,6 +1,7 @@
 import axios from './axios'
 
 export const peticionListarProductos = () => axios.get('/product')
+export const peticionListarProductosAdmin = () => axios.get('/product-admin')
 
 export const peticionEliminarProducto = (id) => axios.delete(`product/delete/${id}`)
 
@@ -34,3 +35,5 @@ export const peticionModificarProducto = async (id,producto) => {
         }
     })
 }
+
+export const peticionModificarEstadoActivo = (id) => axios.put(`product/update/state/${id}`);

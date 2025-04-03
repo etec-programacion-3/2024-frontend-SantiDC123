@@ -3,10 +3,15 @@ import { SERVER_URL } from '../../../utils/utils'
 
 import { ModalEliminarProducto } from './ModalEliminarProducto';
 import { useState } from 'react';
+import { useProductContext } from '../../../context/ProductContext';
 
 export const ProductoPanel = ({ id, titulo, portada, precio, stock, activo }) => {
     const [showModal, setShowModal] = useState(false)
-  
+    const { modificarEstadoActivo } = useProductContext();
+    const handleClickEstado = (id) => {
+        console.log('estado modificado');
+        modificarEstadoActivo(id);
+    }
     return (
         <>
             <article className="producto-panel">
@@ -14,7 +19,13 @@ export const ProductoPanel = ({ id, titulo, portada, precio, stock, activo }) =>
                 <h3>{titulo}</h3>
                 <p className='precio-producto-panel'>${precio}</p>
                 <p className='subtotal-producto-panel'>{stock}</p>
-                <p className='subtotal-producto-panel'>{activo ? 'Activo' : 'Inactivo'}</p>
+                <p className='estado-producto-panel'>
+                    {activo ? <span className='estado-activo'>Activo</span> : <span className='estado-deshabilitado'>Deshabiltado</span>}
+                    <svg onClick={() => handleClickEstado(id)} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m16 10 3-3m0 0-3-3m3 3H5v3m3 4-3 3m0 0 3 3m-3-3h14v-3" />
+                    </svg>
+
+                </p>
                 <div className="contenedor-btn">
                     <button className='btn-quitar-producto' onClick={() => setShowModal(true)} >
 
@@ -35,7 +46,7 @@ export const ProductoPanel = ({ id, titulo, portada, precio, stock, activo }) =>
             </article>
             {
                 showModal &&
-                <ModalEliminarProducto setShowModal={setShowModal} id={id}/>
+                <ModalEliminarProducto setShowModal={setShowModal} id={id} />
             }
 
         </>

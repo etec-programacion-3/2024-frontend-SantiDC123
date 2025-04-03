@@ -6,10 +6,10 @@ import { useProductContext } from "../../../context/ProductContext"
 
 
 export const Panel = () => {
-    const { listarProductos, listadoProductos } = useProductContext()
+    const { listarProductosAdmin, listadoProductosAdmin } = useProductContext()
 
     useEffect(() => {
-        listarProductos();
+        listarProductosAdmin();
     }, [])
 
 
@@ -31,11 +31,11 @@ export const Panel = () => {
                         <div className="cabecera-col">Acción</div>
                     </div>
                     <div className="cuerpo-tabla">
-                        
+
                         {
 
 
-                            listadoProductos.map((producto) => {
+                            listadoProductosAdmin.map((producto) => {
                                 return <ProductoPanel
                                     key={producto._id} id={producto._id} titulo={producto.titulo} portada={producto.portada} precio={producto.precio} stock={producto.stock} activo={producto.activo} />
                             })

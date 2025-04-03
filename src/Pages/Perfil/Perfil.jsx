@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { DatosCompra } from "../../components/DatosCompra/DatosCompra"
 import "./Perfil.css"
 import { useSaleContext } from "../../context/SaleContext"
-import { useUserContext } from "../../context/UserContext"
 import { ProductoDetalleCompra } from "../../components/ProductoDetalleCompra/ProductoDetalleCompra"
 
 export const Perfil = () => {

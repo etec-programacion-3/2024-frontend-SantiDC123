@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { peticionCrearProducto, peticionEliminarProducto, peticionListarDetalleProducto, peticionListarProductos, peticionModificarProducto } from "../api/product";
+import { peticionCrearProducto, peticionEliminarProducto, peticionListarDetalleProducto, peticionListarProductos, peticionListarProductosAdmin, peticionModificarEstadoActivo, peticionModificarProducto } from "../api/product";
 
 export const ProductContext = createContext()
 
@@ -15,6 +15,7 @@ export const useProductContext = () => {
 
 export const ProductProvider = ({ children }) => {
     const [listadoProductos, setListadoProductos] = useState([])
+    const [listadoProductosAdmin, setListadoProductosAdmin] = useState([])
     const [loadingProduct, setLoadingProduct] = useState(false);
     const [productoCreado, setProductoCreado] = useState(null)
     const [productoModificado, setProductoModificado] = useState(null)
@@ -29,6 +30,21 @@ export const ProductProvider = ({ children }) => {
             setLoadingProduct(true)
             const response = await peticionListarProductos();
             setListadoProductos(response.data)
+        } catch (error) {
+            console.log(error);
+            setError([error.response.data.message])
+        } finally {
+            setLoadingProduct(false)
+        }
+
+    }
+
+    const listarProductosAdmin = async () => {
+
+        try {
+            setLoadingProduct(true)
+            const response = await peticionListarProductosAdmin();
+            setListadoProductosAdmin(response.data)
         } catch (error) {
             console.log(error);
             setError([error.response.data.message])
@@ -65,6 +81,30 @@ export const ProductProvider = ({ children }) => {
             setTimeout(() => {
                 setProductoModificado(null)
             }, 0);
+        } catch (error) {
+            console.log(error);
+            setError([error.response.data.message])
+        }
+
+        setLoadingProduct(false)
+    }
+
+    const modificarEstadoActivo = async (id) => {
+        setLoadingProduct(true)
+        try {
+            const response = await peticionModificarEstadoActivo(id);
+            setProductoModificado(response.data)
+            setTimeout(() => {
+                setProductoModificado(null)
+            }, 0);
+            const updatedProducts = listadoProductosAdmin.map(producto => {
+                if (producto._id == id) {
+                    producto.activo = !producto.activo;
+                    return producto;
+                }
+                return producto;
+            })
+            setListadoProductosAdmin(updatedProducts)
         } catch (error) {
             console.log(error);
             setError([error.response.data.message])
@@ -117,9 +157,12 @@ export const ProductProvider = ({ children }) => {
         <ProductContext.Provider value={{
             listarProductos,
             listadoProductos,
+            listarProductosAdmin,
+            listadoProductosAdmin,
             crearProducto,
             listarDetalleProducto,
             modificarProducto,
+            modificarEstadoActivo,
             eliminarProducto,
             productoEliminado,
             productoModificado,
