@@ -19,7 +19,7 @@ export const ModalEliminarProducto = ({ setShowModal, id }) => {
         }
     }, [productoEliminado])
     return (
-        <div id="modalEliminarProducto">
+        <div id="modalEliminarProducto" className="ventana-modal">
             <div className="contenedor-modal">
                 <div>
                     <button className="btn-cerrar-modal" onClick={ocultarModal}>

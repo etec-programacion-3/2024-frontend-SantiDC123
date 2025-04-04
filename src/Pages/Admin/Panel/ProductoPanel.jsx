@@ -4,9 +4,11 @@ import { SERVER_URL } from '../../../utils/utils'
 import { ModalEliminarProducto } from './ModalEliminarProducto';
 import { useState } from 'react';
 import { useProductContext } from '../../../context/ProductContext';
+import { ModalStockProducto } from './ModalStockProducto';
 
 export const ProductoPanel = ({ id, titulo, portada, precio, stock, activo }) => {
     const [showModal, setShowModal] = useState(false)
+    const [showModalStock, setShowModalStock] = useState(false)
     const { modificarEstadoActivo } = useProductContext();
     const handleClickEstado = (id) => {
         console.log('estado modificado');
@@ -18,7 +20,16 @@ export const ProductoPanel = ({ id, titulo, portada, precio, stock, activo }) =>
                 <img className='img-producto-panel' src={`${SERVER_URL + portada}`} alt="producto panel" />
                 <h3>{titulo}</h3>
                 <p className='precio-producto-panel'>${precio}</p>
-                <p className='subtotal-producto-panel'>{stock}</p>
+                <p className='stock-producto-panel'>
+                    <span>{stock}</span>
+
+
+                    <svg onClick={() => setShowModalStock(true)} className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 3v4a1 1 0 0 1-1 1H5m4 10v-2m3 2v-6m3 6v-3m4-11v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1Z" />
+                    </svg>
+
+
+                </p>
                 <p className='estado-producto-panel'>
                     {activo ? <span className='estado-activo'>Activo</span> : <span className='estado-deshabilitado'>Deshabiltado</span>}
                     <svg onClick={() => handleClickEstado(id)} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -45,10 +56,14 @@ export const ProductoPanel = ({ id, titulo, portada, precio, stock, activo }) =>
                 </div>
             </article>
             {
-                showModal &&
+                (showModal && !showModalStock) &&
                 <ModalEliminarProducto setShowModal={setShowModal} id={id} />
             }
 
+            {
+                (showModalStock && !showModal) &&
+                <ModalStockProducto setShowModalStock={setShowModalStock} id={id} />
+            }
         </>
     )
 }

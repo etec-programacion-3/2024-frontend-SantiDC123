@@ -43,42 +43,48 @@ export const ModificarProducto = () => {
 
                 {
 
+                    loadingProduct 
+                    ?
+                        <p>Cargando.. </p>
+                        :
 
-                    detalleProducto &&
-                    <form className='form-nuevo-prod' onSubmit={(e) => handleSubmit(e)}>
-                        <div>
-                            <label htmlFor="">Título</label>
-                            <input onChange={(e) => handleInputChange(e)} name='titulo' type="text" defaultValue={detalleProducto.titulo} />
-                        </div>
-                        <div>
-                            <label htmlFor="">Portada Actual</label>
-                            <div className="contenedor-img">
-                                <img src={SERVER_URL + detalleProducto.portada} alt="" />
-                            </div>
+                        detalleProducto &&
+                        <form className='form-nuevo-prod' onSubmit={(e) => handleSubmit(e)}>
+                            <fieldset disabled={loadingProduct ? 'disabled' : ''}>
+                                <div>
+                                    <label htmlFor="">Título</label>
+                                    <input onChange={(e) => handleInputChange(e)} name='titulo' type="text" defaultValue={detalleProducto.titulo} />
+                                </div>
+                                <div>
+                                    <label htmlFor="">Portada Actual</label>
+                                    <div className="contenedor-img">
+                                        <img src={SERVER_URL + detalleProducto.portada} alt="" />
+                                    </div>
 
-                            <input onChange={(e) => handleImgChange(e)} name='portada' type="file" accept='image/*' />
+                                    <input onChange={(e) => handleImgChange(e)} name='portada' type="file" accept='image/*' />
 
-                        </div>
-                        <div>
-                            <label htmlFor="">Precio</label>
-                            <input onChange={(e) => handleInputChange(e)} name='precio' type="number" min={0} defaultValue={detalleProducto.precio} />
-                        </div>
-                        <div>
-                            <label htmlFor="">Stock</label>
-                            <input onChange={(e) => handleInputChange(e)} name='stock' type="number" min={0} defaultValue={detalleProducto.stock} />
-                        </div>
-                        <div>
-                            <label htmlFor="">Descripción</label>
-                            <textarea onChange={(e) => handleInputChange(e)} name="descripcion" rows={5} defaultValue={detalleProducto.descripcion}></textarea>
-                        </div>
-                        <div>
-                            {
-                                error &&
-                                <p className='text-error'>{error}</p>
-                            }
-                        </div>
-                        <button className='btn-guardar' type='submit'>{loadingProduct ? 'Procesando..' : 'Modificar'}</button>
-                    </form>
+                                </div>
+                                <div>
+                                    <label htmlFor="">Precio</label>
+                                    <input onChange={(e) => handleInputChange(e)} name='precio' type="number" min={0} defaultValue={detalleProducto.precio} />
+                                </div>
+                                <div>
+                                    <label htmlFor="">Stock</label>
+                                    <input onChange={(e) => handleInputChange(e)} name='stock' type="number" min={0} defaultValue={detalleProducto.stock} />
+                                </div>
+                                <div>
+                                    <label htmlFor="">Descripción</label>
+                                    <textarea onChange={(e) => handleInputChange(e)} name="descripcion" rows={5} defaultValue={detalleProducto.descripcion}></textarea>
+                                </div>
+                                <div>
+                                    {
+                                        error &&
+                                        <p className='text-error'>{error}</p>
+                                    }
+                                </div>
+                                <button className={`btn-guardar ${loadingProduct ? 'disabled' : ''}`} type='submit'>Modificar</button>
+                            </fieldset>
+                        </form>
                 }
 
             </div>

@@ -14,7 +14,6 @@ export const CardProducto = ({ id, titulo, portada, descripcion, precio, stockRe
 
 
     const addItemConfirm = async () => {
-        console.log(stockDisponible);
         if (stockDisponible >= cantidad) {
             await addItem({ id, cantidad, precio, stockReal })
             Toastify({

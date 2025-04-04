@@ -146,7 +146,6 @@ export const ProductProvider = ({ children }) => {
         } catch (error) {
             setError([error.response.data.message])
         }
-
         setLoadingProduct(false)
     }
 
