@@ -20,7 +20,11 @@ export const Panel = () => {
 
 
             <div className="contenedor">
-                <Link to="producto/nuevo" className="btn-nuevo-prod">Nuevo Producto</Link>
+                <div className="contenedor-btn-panel">
+                    <Link to="producto/nuevo" className="btn-nuevo-prod">Nuevo Producto</Link>
+                    <Link to="stock/historial" className="btn-stock-historial">Movimientos de Stock</Link>
+                </div>
+
                 <div className="tabla-panel">
                     <div className="cabecera-tabla">
                         <div className="cabecera-col">Producto</div>

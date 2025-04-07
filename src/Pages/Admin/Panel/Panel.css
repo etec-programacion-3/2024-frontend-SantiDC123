@@ -252,11 +252,14 @@
     height: 100px;
     overflow: auto;
 }
-
+.seccion-panel .contenedor-btn-panel{
+    display: flex;
+    justify-content: space-between;
+}
 .seccion-panel .btn-nuevo-prod {
     display: block;
     width: fit-content;
-    margin: 2rem auto;
+    margin: 2rem 0;
     margin-bottom: 1rem;
     background-color: royalblue;
     text-decoration: none;
@@ -264,6 +267,18 @@
     padding: .4rem 1.5rem;
     border-radius: 5px;
 }
+.seccion-panel .btn-stock-historial{
+    display: block;
+    width: fit-content;
+    margin: 2rem 0;
+    margin-bottom: 1rem;
+    background-color: #c39e2c;
+    text-decoration: none;
+    color: #fff;
+    padding: .4rem 1.5rem;
+    border-radius: 5px;
+}
+
 
 .ventana-modal {
     position: fixed;
@@ -367,6 +382,11 @@
     .tabla-panel {
         .cabecera-col:last-child {
             width: 30%;
+        }
+
+        .cuerpo-tabla{
+            max-height: 50vh;
+            overflow-y: auto;
         }
 
         .producto-panel {

@@ -1,0 +1,106 @@
+.seccion-stock-historial {
+    padding: 2rem 0;
+
+    h2 {
+        text-align: center;
+    }
+
+    hr {
+        margin: 1rem auto;
+        border: 1px solid royalblue;
+        margin-bottom: 2rem;
+    }
+}
+
+
+.seccion-stock-historial .tabla-panel {
+    border: 1px solid royalblue;
+}
+
+.seccion-stock-historial .tabla-panel .cuerpo-tabla {
+    max-height: 50vh;
+    overflow: auto;
+}
+
+.seccion-stock-historial .tabla-panel .cabecera-tabla {
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem 0;
+    background-color: #f1f1f1;
+}
+
+.seccion-stock-historial .tabla-panel .cabecera-col {
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.seccion-stock-historial .tabla-panel .cuerpo-tabla .producto-panel .stock-producto-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seccion-stock-historial .tabla-panel .cuerpo-tabla .producto-panel .stock-producto-panel svg {
+    margin-left: 1rem;
+    color: royalblue;
+    cursor: pointer;
+    border-radius: 30px;
+    padding: .2rem;
+    transition: all .4s ease;
+
+    &:hover {
+        opacity: 0.6;
+        transform: scale(1.1);
+    }
+}
+
+.seccion-stock-historial .tabla-panel .cuerpo-tabla .producto-panel .estado-producto-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.seccion-stock-historial .tabla-panel .cuerpo-tabla .producto-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #000;
+    background-color: #fff;
+}
+
+.seccion-stock-historial .tabla-panel .cuerpo-tabla .producto-panel:nth-child(even) {
+    background-color: #f1f1f1;
+}
+
+.seccion-stock-historial .tabla-panel .cuerpo-tabla .producto-panel>* {
+    width: 20%;
+    text-align: center;
+    border-right: 1px solid #ccc;
+    max-height: 120px;
+    padding: 1rem .5rem;
+
+}
+
+.seccion-stock-historial .tabla-panel .cuerpo-tabla .producto-panel p {
+    font-size: 14px;
+}
+
+.seccion-stock-historial .tabla-panel .cuerpo-tabla .producto-panel .titulo-prod {
+    font-style: italic;
+    font-weight: 600;
+
+}
+
+.seccion-stock-historial .tabla-panel .cuerpo-tabla .producto-panel img {
+    padding: .5rem;
+    aspect-ratio: 1;
+    object-fit: contain;
+}
+
+.seccion-stock-historial .tabla-panel .cuerpo-tabla .producto-panel .contenedor-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

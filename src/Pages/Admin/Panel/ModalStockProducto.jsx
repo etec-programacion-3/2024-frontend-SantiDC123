@@ -1,23 +1,21 @@
 import { useEffect } from "react";
-import { useProductContext } from "../../../context/ProductContext";
+import { useStockContext } from "../../../context/StockContext"
+import { ProductoModalStock } from "./ProductoModalStock";
 
-export const ModalStockProducto = ({ setShowModalStock, id }) => {
-    const { eliminarProducto, error, limpiarError, productoEliminado } = useProductContext();
+export const ModalStockProducto = ({ setShowModalStock, id, tituloProd }) => {
 
-    const handleClickEliminar = (id) => {
-        eliminarProducto(id)
-    }
-
+    const { listarHistorialStockPorProducto, listadoHistorialStock, loadingStock } = useStockContext();
     const ocultarModal = () => {
         setShowModalStock(false)
-        limpiarError()
     }
 
     useEffect(() => {
-        if (productoEliminado) {
-            ocultarModal();
-        }
-    }, [productoEliminado])
+        listarHistorialStockPorProducto(id)
+        document.body.style.overflowY = 'hidden';
+        return () => document.body.style.overflowY = 'auto';
+    }, [id])
+
+
     return (
         <div id="modalStockProducto" className="ventana-modal ventana-modal-stock">
             <div className="contenedor-modal">
@@ -31,46 +29,41 @@ export const ModalStockProducto = ({ setShowModalStock, id }) => {
                 <div className="contenido-modal">
 
                     <h3>Historial de stock</h3>
-                    <h4>PC gamer</h4>
+                    <h4 style={{ fontStyle: "italic" }}> {tituloProd} </h4>
                     <hr />
                     {
-                        (error && error.length > 0) &&
-                        <p className="text-error">* {error}</p>
+                        loadingStock
+                            ?
+                            <p>Cargando.. </p>
+                            :
+                            listadoHistorialStock && listadoHistorialStock.length > 0
+                                ?
+                                <div className="tabla-panel">
+                                    <div className="cabecera-tabla">
+                                        <div className="cabecera-col">Fecha</div>
+                                        <div className="cabecera-col">Stock Previo</div>
+                                        <div className="cabecera-col">Stock Resultante</div>
+                                        <div className="cabecera-col">Descripción</div>
+                                    </div>
+                                    <div className="cuerpo-tabla">
+
+                                        {
+
+                                            listadoHistorialStock.map((item) => {
+                                                return (
+                                                    <ProductoModalStock key={item._id} fecha={item.fecha_modificacion} stockPrevio={item.valor_previo} stockModificado={item.valor_actual} descripcion={item.descripcion} />
+                                                )
+                                            })
+
+
+                                        }
+
+                                    </div>
+                                </div>
+                                :
+                                <p>No hay registros de modificación de stock de este producto.</p>
+
                     }
-                    <div className="tabla-panel">
-                        <div className="cabecera-tabla">
-                            <div className="cabecera-col">Fecha</div>
-                            <div className="cabecera-col">Stock Previo</div>
-                            <div className="cabecera-col">Stock Actual</div>
-                            <div className="cabecera-col">Descripción</div>
-                        </div>
-                        <div className="cuerpo-tabla">
-
-                            <article className="producto-panel">
-                                <p>20/05/2025</p>
-                                <p>5</p>
-                                <p>9</p>
-                                <p>Stock modificado desde el panel de administración</p>
-                            </article>
-
-                            <article className="producto-panel">
-                                <p>15/08/2025</p>
-                                <p>0</p>
-                                <p>6</p>
-                                <p>Stock modificado desde el panel de administración</p>
-                            </article>
-
-                            <article className="producto-panel">
-                                <p>11/08/2025</p>
-                                <p>5</p>
-                                <p>2</p>
-                                <p>Stock modificado por una venta realizada </p>
-                            </article>
-                        </div>
-                    </div>
-
-
-
 
                 </div>
             </div>

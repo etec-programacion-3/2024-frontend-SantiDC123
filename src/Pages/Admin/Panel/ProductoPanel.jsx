@@ -62,7 +62,7 @@ export const ProductoPanel = ({ id, titulo, portada, precio, stock, activo }) =>
 
             {
                 (showModalStock && !showModal) &&
-                <ModalStockProducto setShowModalStock={setShowModalStock} id={id} />
+                <ModalStockProducto setShowModalStock={setShowModalStock} id={id} tituloProd={titulo} />
             }
         </>
     )
