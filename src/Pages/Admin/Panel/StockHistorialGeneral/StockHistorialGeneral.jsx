@@ -27,8 +27,10 @@ export const StockHistorialGeneral = () => {
                             loadingStock ?
                                 <p>Cargando..</p>
                                 :
-                                listadoHistorialStockGeneral.map((item) => {
-                                    return (
+                                listadoHistorialStockGeneral.length > 0 && listadoHistorialStockGeneral.map((item) => {
+                                    
+                                    
+                                    return ( item.producto &&
                                         <ItemStockGeneral key={item._id} tituloProd={item.producto.titulo} fecha={item.fecha_modificacion} stockPrevio={item.valor_previo} stockModificado={item.valor_actual} descripcion={item.descripcion} />
                                     )
                                 })

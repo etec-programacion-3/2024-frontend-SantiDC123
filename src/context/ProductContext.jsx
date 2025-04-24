@@ -57,7 +57,6 @@ export const ProductProvider = ({ children }) => {
         setLoadingProduct(true)
         try {
             const response = await peticionCrearProducto(producto);
-
             setProductoCreado(response.data)
             setTimeout(() => {
                 setProductoCreado(null)
@@ -117,11 +116,15 @@ export const ProductProvider = ({ children }) => {
         setLoadingProduct(true)
         try {
             const response = await peticionEliminarProducto(id)
+
             console.log(response.data);
 
             if (response.status === 204) {
                 const updatedProducts = listadoProductos.filter((producto) => producto._id != id)
+                const updatedProductsAdmin = listadoProductosAdmin.filter((producto) => producto._id != id)
+
                 setListadoProductos(updatedProducts);
+                setListadoProductosAdmin(updatedProductsAdmin);
                 setProductoEliminado(true)
                 setTimeout(() => {
                     setProductoEliminado(null)
